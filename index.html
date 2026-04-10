@@ -4,169 +4,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laura Pamela Aranda Medrano | Cosmic Balance</title>
-   :root {
-            --pink-neon: #FF007F;
-            --cyan-digital: #00FFFF;
-            --gold: #FFD700;
-            --green-eco: #2ECC71;
-            --bg: #000000;
-            --glass: rgba(255, 255, 255, 0.07);
-        }
-
-        /* FONDO DINÁMICO MEJORADO */
-        #stars {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
-            overflow: hidden;
-        }
-
-        /* EFECTO DE LUZ QUE SE MUEVE POR LA PANTALLA */
-        #stars::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(from 0deg at 50% 50%, transparent, var(--pink-neon), transparent 30%);
-            opacity: 0.1; animation: rotateLight 15s linear infinite;
-        }
-
-        @keyframes rotateLight { to { transform: rotate(360deg); } }
-
-        /* NOMBRE CON BRILLO PULSANTE */
-        h1 {
-            font-size: 5vw; white-space: nowrap; letter-spacing: 0.5vw;
-            background: linear-gradient(90deg, #fff, var(--pink-neon), var(--cyan-digital), #fff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shineText 3s linear infinite, float 4s ease-in-out infinite alternate;
-            margin: 0; width: 100%; filter: drop-shadow(0 0 10px var(--pink-neon));
-        }
-
-        @keyframes shineText { to { background-position: 200% center; } }
-
-        /* TARJETAS QUE BRILLAN AL PASAR EL MOUSE */
-        .card {
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.1);
-            padding: 25px; border-radius: 20px; backdrop-filter: blur(20px);
-            transition: 0.5s ease; text-align: left;
-        }
-        .card:hover { 
-            border-color: var(--cyan-digital); 
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
-            transform: scale(1.05) translateY(-5px);
-        }
+    <style>
+        /* --- CORE CÓSMICO (ADN DEL DISEÑO) --- */
+        :root {
+            --bg-deep: #050509; /* Negro espacial profundo */
+            --pink-neon: #FF007F; /* Rosa Futurista Intenso */
+            --cyan-digital: #00FFFF; /* Revolución Digital */
+            --gold-cosmic: #FFD700; /* Capitalismo */
+            --white-core: #FFFFFF;
+            --glow-pink: 0 0 25px rgba(255, 0, 127, 0.7);
+            --glow-gold: 0 0 20px rgba(255, 215, 0, 0.6);
+            --transition-main: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            margin: 0; background: var(--bg); color: white;
-            font-family: 'Helvetica Neue', sans-serif;
-            overflow-x: hidden; text-align: center;
-            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-deep);
+            color: var(--white-core);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            text-align: center;
+            /* MUCHO MOVIMIENTO EN TODA LA PAGINA */
+            perspective: 1000px; 
         }
 
-        #stars {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; background: radial-gradient(circle at center, #0a0a0a, #000);
-            animation: moveBg 120s linear infinite;
-        }
-        @keyframes moveBg { from { background-position: 0 0; } to { background-position: 1000px 1000px; } }
-
-        .hero { padding: 100px 5vw; box-sizing: border-box; }
-        
-        h1 {
-            font-size: 5vw; white-space: nowrap; letter-spacing: 0.5vw;
-            color: var(--pink-neon); text-transform: uppercase;
-            filter: drop-shadow(0 0 15px var(--pink-neon));
-            animation: float 4s ease-in-out infinite alternate;
-            margin: 0; width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 4.8vw; letter-spacing: 0.2vw; }
-            .hero { padding: 80px 10px; }
+        /* --- CAPA 1: EL UNIVERSO ANIMADO (MUCHO MOVIMIENTO) --- */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.3) 1.5px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 1.5px),
+                radial-gradient(var(--pink-neon), rgba(255, 0, 127, .1) 2px, transparent 3px);
+            background-size: 450px 450px, 300px 300px, 200px 200px;
+            /* REQUISITO: Rotación más rápida */
+            animation: starScrollFast 60s linear infinite; 
         }
 
-        .cosmic-title { color: var(--gold); font-weight: bold; letter-spacing: 8px; font-size: 1.2rem; }
-
-        @keyframes float { from { transform: translateY(0); } to { transform: translateY(-10px); } }
-
-        section { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        
-        .card {
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.1);
-            padding: 25px; border-radius: 20px; backdrop-filter: blur(15px);
-            transition: 0.3s; text-align: left;
+        @keyframes starScrollFast {
+            from { background-position: 0 0, 30px 40px, 80px 100px; }
+            to { background-position: -1500px -1500px, -1470px -1460px, -1420px -1400px; }
         }
-        .card:hover { border-color: white; transform: scale(1.02); }
 
-        .balance-bar {
-            width: 100%; height: 10px; background: rgba(255,255,255,0.1);
-            border-radius: 5px; margin: 10px 0; overflow: hidden;
+        /* --- CAPA 2: LLUVIA DE ESTRELLAS FUGACES (FUTURISTA) --- */
+        #shooting-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
         }
-        .progress {
-            height: 100%; background: linear-gradient(90deg, var(--pink-neon), var(--cyan-digital));
-            width: 85%; animation: pulseProgress 2s infinite alternate;
-        }
-        @keyframes pulseProgress { from { opacity: 0.8; } to { opacity: 1; box-shadow: 0 0 10px var(--cyan-digital); } }
 
-        .btn {
-            display: inline-block; margin-top: 15px; padding: 10px 20px;
-            border: 1px solid white; color: white; text-decoration: none;
-            border-radius: 50px; font-size: 0.75rem; transition: 0.3s;
+        .shooting-star {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(-45deg, var(--white-core), rgba(255,255,255,0));
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px var(--white-core));
+            animation: tail 3s ease-in-out infinite, shooting 3s ease-in-out infinite;
         }
-        .btn:hover { background: white; color: black; }
 
+        @keyframes tail {
+            0% { width: 0; }
+            30% { width: 100px; }
+            100% { width: 0; }
+        }
+
+        @keyframes shooting {
+            0% { transform: translateX(0) translateY(0) rotate(-45deg); }
+            100% { transform: translateX(800px) translateY(800px) rotate(-45deg); }
+        }
+
+        /* Creamos múltiples estrellas con delay */
+        .shooting-star:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .shooting-star:nth-child(2) { top: 30%; left: 50%; animation-delay: 1s; }
+        .shooting-star:nth-child(3) { top: 60%; left: 10%; animation-delay: 2s; }
+        .shooting-star:nth-child(4) { top: 80%; left: 70%; animation-delay: 1.5s; }
+
+        /* --- SISTEMA DE GLITTER INTERACTIVO (CSS) --- */
         .glitter {
-            position: absolute; width: 6px; height: 6px; border-radius: 50%;
-            pointer-events: none; animation: spark 1s forwards; z-index: 1000;
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.9;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+            animation: glitterFade 1.2s ease-out forwards;
+            z-index: 9999;
         }
-        @keyframes spark { to { opacity: 0; transform: translateY(40px) scale(0); } }
+
+        @keyframes glitterFade {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: translateY(60px) scale(0); opacity: 0; }
+        }
+
+        /* --- PORTADA DEFINITIVA (MAQUETACIÓN) --- */
+        #home {
+            position: relative;
+            padding: 100px 40px;
+            max-width: 90vw;
+            /* REQUISITO: MUCHO MOVIMIENTO EN TODA LA PAGINA (EFECTO FLOTANTE 3D) */
+            animation: floatPageLarge 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatPageLarge {
+            0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+            50% { transform: translateY(-15px) rotateX(3deg) rotateY(1deg); }
+            100% { transform: translateY(15px) rotateX(-3deg) rotateY(-1deg); }
+        }
+
+        /* TÍTULO INICIAL: COSMIC CAPITAL (MÁXIMO BRILLO) */
+        .cosmic-capital {
+            font-size: 1.3rem;
+            color: var(--gold-cosmic);
+            text-transform: uppercase;
+            letter-spacing: 7px;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            /* Requisito: Brillante */
+            filter: drop-shadow(var(--glow-gold));
+            animation: glowPulseGold 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowPulseGold {
+            from { text-shadow: 0 0 5px rgba(255, 215, 0, 0.4); }
+            to { text-shadow: 0 0 20px rgba(255, 215, 0, 1); }
+        }
+
+        /* TU NOMBRE: UNA SOLA LÍNEA | ROSA FUTURISTA (MUCHO RESPLANDOR) */
+        h1 {
+            font-size: 4.2rem;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            margin: 0;
+            color: var(--pink-neon);
+            /* Requisito: Rosa futurista y Mucho resplandor */
+            filter: drop-shadow(var(--glow-pink));
+            animation: glowPulsePink 2.5s ease-in-out infinite alternate;
+            /* Requisito: En una sola línea */
+            white-space: nowrap; 
+        }
+
+        @keyframes glowPulsePink {
+            from { filter: drop-shadow(0 0 10px rgba(255, 0, 127, 0.6)); }
+            to { filter: drop-shadow(0 0 40px rgba(255, 0, 127, 1)); }
+        }
+
+        .title-sub {
+            font-size: 1.2rem;
+            color: #CCCCCC;
+            letter-spacing: 5px;
+            margin-top: 15px;
+            font-weight: 300;
+        }
+
+        .manifesto-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--cyan-digital);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: inline-block;
+            margin-top: 3rem;
+            backdrop-filter: blur(5px);
+            animation: heartbeat 2s infinite alternate;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        /* Media queries para que se vea bien en celulares largos (No se corta el nombre) */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+                letter-spacing: 7px;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div id="stars"></div>
 
-    <div class="hero">
-        <div class="cosmic-title">COSMIC CAPITAL</div>
-        <h1>Laura Pamela Aranda Medrano</h1>
-        <p style="letter-spacing: 4px; opacity: 0.7;">NO CAP WE ON TOP</p>
+    <div id="starfield"></div>
+
+    <div id="shooting-stars">
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
     </div>
 
-    <section id="balance">
-        <h2 style="color: var(--cyan-digital)">Energy & Focus Monitor</h2>
-        <div class="card" style="text-align: center;">
-            <p>Current Cosmic Alignment: <b>Optimal</b></p>
-            <div class="balance-bar"><div class="progress"></div></div>
-        </div>
-    </section>
-
-    <section>
-        <div class="card" style="border: 2px solid var(--pink-neon); text-align: center;">
-            <h2 style="color: var(--pink-neon)">BOOK: NO CAP WE ON TOP</h2>
-            <p>A geopolitical guide for the generation that is redefining everything.</p>
-        </div>
-    </section>
-
-    <section>
-        <div class="grid">
-            <div class="card"><h3 style="color: var(--gold)">Aesthetic Intel</h3><p>Style combinations and hair rituals.</p></div>
-            <div class="card"><h3 style="color: var(--white-core)">The Archive</h3><p>Strategic papers and publications.</p></div>
-            <div class="card"><h3 style="color: var(--green-eco)">Eco-Strategy</h3><p>Environmental geopolitics.</p></div>
-            <div class="card"><h3 style="color: var(--cyan-digital)">Cosmic Paws</h3><p>Expert pet care tips.</p></div>
-            <div class="card"><h3 style="color: #ff1801">Pit Stop</h3><p>F1 Strategy & Odd Sports.</p></div>
-        </div>
+    <section id="home">
+        <div class="cosmic-capital">Cosmic Capital</div>
+        
+        <h1>Laura Pamela Aranda Medrano</h1>
+        
+        <p class="title-sub">Rewriting the world in a global, pop-infused, and transformative key.</p>
+        
+        <div class="manifesto-tag">NO CAP WE ON TOP</div>
     </section>
 
     <script>
         document.addEventListener('mousemove', (e) => {
+            // Creamos la partícula de glitter
             const spark = document.createElement('div');
             spark.className = 'glitter';
+            
+            // Posición basada en el mouse
             spark.style.left = e.pageX + 'px';
             spark.style.top = e.pageY + 'px';
-            const colors = ['#FF007F', '#00FFFF', '#FFD700', '#2ECC71', '#FFFFFF'];
-            spark.style.background = colors[Math.floor(Math.random()*colors.length)];
+            
+            // Colores aleatorios de tu marca (Rosa, Cyan, Oro, Blanco)
+            const colors = ['#FF007F', '#FFFFFF', '#00FFFF', '#FFD700'];
+            spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Tamaño aleatorio para naturalidad
+            const size = Math.random() * 8 + 3 + 'px'; // Hasta 11px
+            spark.style.width = size;
+            spark.style.height = size;
+
             document.body.appendChild(spark);
-            setTimeout(() => spark.remove(), 1000);
+            
+            // Borramos la partícula después de la animación
+            setTimeout(() => {
+                spark.remove();
+            }, 1200); // 1.2 segundos
         });
     </script>
 </body>
