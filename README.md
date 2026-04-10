@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura Pamela | Cosmic Capitalism & Global Pop</title>
+    <style>
+        /* --- ESTILOS BASE (EL ADN CÓSMICO) --- */
+        :root {
+            --bg-deep: #050505; /* Negro espacio */
+            --text-main: #FFFFFF;
+            --text-muted: #CCCCCC;
+            --gold-cosmic: #FFD700; /* Capitalismo */
+            --pink-pop: #FF69B4; /* Cultura Pop */
+            --cyan-digital: #00FFFF; /* Revolución */
+            --shadow-glow: 0 0 20px rgba(255, 215, 0, 0.3);
+            --transition-smooth: all 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Helvetica Neue', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* --- GLOBO TERRÁQUEO GIRATORIO (FONDO) --- */
+        .globe-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150vmax; /* Gigante para cubrir todo */
+            height: 150vmax;
+            border-radius: 50%;
+            /* Efecto de mapa cósmico con gradientes */
+            background: radial-gradient(circle at center, rgba(33, 97, 140, 0.1) 0%, transparent 60%),
+                        radial-gradient(circle at 30% 30%, rgba(93, 173, 226, 0.15) 0%, transparent 40%),
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.2"/></svg>'); /* Estrellas minimalistas */
+            background-size: cover, cover, 50px 50px;
+            opacity: 0.3;
+            animation: spinGlobe 180s linear infinite; /* Gira súper lento */
+            z-index: -2; /* Detrás de todo */
+            filter: blur(1px); /* Suavizado cósmico */
+        }
+
+        @keyframes spinGlobe {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* --- SISTEMA DE GLITTER (CSS) --- */
+        .glitter {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.9;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: moveGlitter 1.2s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes moveGlitter {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: translateY(50px) scale(0); opacity: 0; }
+        }
+
+        /* --- SECCIONES Y CONTENIDO --- */
+        section {
+            width: 100%;
+            max-width: 900px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- PORTADA (MAIN CHARACTER ENERGY) --- */
+        #home {
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin: 0;
+            background: linear-gradient(to right, #fff, var(--gold-cosmic));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(var(--shadow-glow));
+        }
+
+        .title-sub {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            margin-top: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .manifesto-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--cyan-digital);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- SECCIÓN DE PAPERS (THE INTELLECTUAL AXIS) --- */
+        #papers {
+            background: rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            margin: 50px 0;
+        }
+
+        h2.section-title {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 3rem;
+        }
+
+        #papers .section-title {
+            color: var(--gold-cosmic);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .paper-card {
+            background: rgba(255, 255, 255, 0.03);
+            width: 100%;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            text-align: left;
+            border: 1px solid transparent;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .paper-card:hover {
+            border-color: rgba(255, 215, 0, 0.3);
+            background: rgba(255, 215, 0, 0.02);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .paper-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--text-main);
+            font-size: 1.4rem;
+        }
+
+        .paper-card p {
+            margin: 0 0 15px 0;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .paper-link {
+            color: var(--cyan-digital);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- SECCIÓN LIFESTYLE (COSMIC RITUALS) --- */
+        #lifestyle {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(3px);
+            border-radius: 20px;
+        }
+
+        #lifestyle .section-title {
+            color: var(--pink-pop);
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+        }
+
+        .ritual-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .ritual-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: var(--transition-smooth);
+        }
+
+        .ritual-card:hover {
+            border-color: rgba(255, 105, 180, 0.3);
+            background: rgba(255, 105, 180, 0.02);
+        }
+
+        .ritual-card h3 {
+            color: var(--text-main);
+            margin-top: 0;
+        }
+
+        .ritual-card p {
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="globe-bg"></div>
+
+    <section id="home">
+        <div class="manifesto-tag">Redefining Geopolitics</div>
+        <h1>Laura Pamela</h1>
+        <p class="title-sub">Aranda Medrano</p>
+        <p style="max-width: 600px; line-height: 1.6; color: #ccc;">
+            Intellectual excellence blends with pop culture flair and the strategic vision of a generation that refuses to settle. rewriting the world in a global, pop-infused, and transformative key.
+        </p>
+    </section>
+
+    <section id="papers">
+        <h2 class="section-title">Strategic Research</h2>
+        
+        <div class="paper-card">
+            <h3>The Cosmic Capitalism Manifesto</h3>
+            <p>Analysis of how digital value systems are creating new geopolitical leverage beyond traditional borders.</p>
+            <a href="#" class="paper-link">Read Paper →</a>
+        </div>
+
+        <div class="paper-card">
+            <h3>Soft Power in Gen Z Aesthetics</h3>
+            <p>Examining the influence of viral trends and cultural narratives on global policy and justice movements.</p>
+            <a href="#" class="paper-link">Read Paper →</a>
+        </div>
+
+    </section>
+
+    <section id="lifestyle">
+        <h2 class="section-title">Cosmic Rituals</h2>
+        
+        <div class="ritual-container">
+            <div class="ritual-card">
+                <h3>Mental Resilience</h3>
+                <p>Strategies for deep work and mental clarity in an age of digital chaos. Logistics of an intellectual leader.</p>
+            </div>
+            <div class="ritual-card">
+                <h3>Aesthetic Logistics</h3>
+                <p>Because soft power requires a strong skin barrier. The curated aesthetics of future diplomacy.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            // Creamos la partícula de glitter
+            const spark = document.createElement('div');
+            spark.className = 'glitter';
+            
+            // Posición basada en el mouse
+            spark.style.left = e.pageX + 'px';
+            spark.style.top = e.pageY + 'px';
+            
+            // Colores aleatorios del Capitalismo Cósmico y Pop
+            const colors = ['#FFD700', '#FFFFFF', '#FF69B4', '#00FFFF'];
+            spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Tamaño aleatorio para naturalidad
+            const size = Math.random() * 6 + 2 + 'px';
+            spark.style.width = size;
+            spark.style.height = size;
+
+            document.body.appendChild(spark);
+            
+            // Borramos la partícula después de la animación
+            setTimeout(() => {
+                spark.remove();
+            }, 1000); // 1 segundo
+        });
+    </script>
+</body>
+</html>
