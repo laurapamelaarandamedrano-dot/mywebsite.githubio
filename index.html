@@ -3,132 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmic Balance | No Cap We On Top</title>
+    <title>Laura Pamela | Cosmic Balance</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         :root {
             --pink-neon: #FF007F;
             --cyan-digital: #00FFFF;
             --gold: #FFD700;
-            --green-eco: #2ECC71;
-            --bg: #000000;
-            --glass: rgba(255, 255, 255, 0.05);
+            --bg-space: #050005;
+            --glass: rgba(255, 255, 255, 0.07);
         }
 
-        body {
-            margin: 0; background: var(--bg); color: white;
-            font-family: 'Helvetica Neue', sans-serif;
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: var(--bg-space);
+            color: white; font-family: 'Helvetica Neue', sans-serif;
             overflow-x: hidden; text-align: center;
-            scroll-behavior: smooth;
         }
 
-        /* --- FONDO DINÁMICO: EL UNIVERSO Y EL GLOBO --- */
-        #universe-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
-            overflow: hidden;
-        }
-
-        /* Estrellas de fondo */
-        #stars {
-            position: absolute; width: 200%; height: 200%;
-            background-image: radial-gradient(white 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveStars 150s linear infinite;
-            opacity: 0.3;
-        }
-
-        /* EL GLOBO TERRÁQUEO GIRATORIO */
-        .globe {
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 60vmax; height: 60vmax;
-            margin-left: -30vmax; margin-top: -30vmax;
-            border-radius: 50%;
+        /* FONDO NEBULA PINK & CYAN */
+        #universe-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3;
             background: 
-                radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.1), transparent),
-                url('https://www.transparenttextures.com/patterns/carbon-fibre.png'), /* Textura sutil */
-                linear-gradient(90deg, #001 0%, #003 50%, #001 100%);
-            box-shadow: inset -20px -20px 50px rgba(0,0,0,0.8), 
-                        inset 20px 20px 50px rgba(0, 255, 255, 0.1),
-                        0 0 40px rgba(0, 255, 255, 0.05);
-            animation: rotateGlobe 40s linear infinite;
-            opacity: 0.5;
-            z-index: -1;
+                radial-gradient(circle at 20% 30%, rgba(255, 0, 127, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
+                #000;
         }
 
-        /* Estrellas Fugaces */
-        .shooting {
-            position: absolute; top: 0; left: 50%; width: 2px; height: 80px;
+        /* ESTRELLAS FUGACES */
+        .shooting-star {
+            position: absolute; left: 50%; top: 0; width: 2px; height: 100px;
             background: linear-gradient(to bottom, var(--pink-neon), transparent);
-            animation: shoot 4s linear infinite; opacity: 0;
+            animation: shoot 4s linear infinite; opacity: 0; z-index: -1;
         }
-
-        @keyframes rotateGlobe { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes moveStars { from { transform: translate(-25%, -25%); } to { transform: translate(0, 0); } }
         @keyframes shoot {
             0% { transform: translateY(-100px) translateX(0) rotate(45deg); opacity: 1; }
             100% { transform: translateY(100vh) translateX(-500px) rotate(45deg); opacity: 0; }
         }
 
-        /* --- CONTENIDO (SECCIONES RETENIDAS) --- */
-        .hero { padding: 120px 20px 60px; min-height: 40vh; display: flex; flex-direction: column; justify-content: center; }
-        .cosmic-brand { color: var(--gold); font-weight: bold; letter-spacing: 10px; font-size: 1.5rem; text-shadow: 0 0 15px var(--gold); }
-        
-        section { padding: 60px 20px; max-width: 1100px; margin: 0 auto; position: relative; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        
-        .card {
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.1);
-            padding: 30px; border-radius: 25px; backdrop-filter: blur(15px);
-            transition: 0.3s; text-align: left;
-        }
-        .card:hover { border-color: var(--pink-neon); transform: translateY(-5px); }
+        /* GLOBO TERRÁQUEO CONTAINER */
+        #globe-canvas { position: fixed; top: 0; left: 0; z-index: -2; outline: none; }
 
-        .balance-bar { width: 100%; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; margin: 15px 0; overflow: hidden; }
-        .progress { height: 100%; background: linear-gradient(90deg, var(--pink-neon), var(--cyan-digital)); width: 88%; }
+        /* HEADER & SECCIONES */
+        .content { position: relative; z-index: 1; padding: 100px 20px; }
+        
+        h1 {
+            font-size: clamp(1.8rem, 6vw, 5rem); white-space: nowrap;
+            color: var(--pink-neon); text-transform: uppercase;
+            filter: drop-shadow(0 0 15px var(--pink-neon));
+            letter-spacing: 0.2vw; margin: 0;
+        }
+
+        .cosmic-brand { color: var(--gold); letter-spacing: 10px; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; }
+
+        .card-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; max-width: 1100px; margin: 50px auto; padding: 0 20px;
+        }
+
+        .card {
+            background: var(--glass); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1); padding: 30px;
+            border-radius: 20px; transition: 0.3s; text-align: left;
+        }
+        .card:hover { border-color: var(--cyan-digital); transform: translateY(-10px); }
+
+        /* MONITOR DE BALANCE */
+        .balance-container { max-width: 600px; margin: 40px auto; background: var(--glass); padding: 20px; border-radius: 50px; border: 1px solid var(--cyan-digital); }
+        .bar { width: 100%; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; overflow: hidden; margin-top: 10px; }
+        .fill { width: 88%; height: 100%; background: linear-gradient(90deg, var(--pink-neon), var(--cyan-digital)); animation: pulse 2s infinite alternate; }
+        @keyframes pulse { from { opacity: 0.8; } to { opacity: 1; } }
 
         /* GLITTER */
         .glitter { position: absolute; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; animation: spark 1s forwards; z-index: 1000; }
-        @keyframes spark { to { opacity: 0; transform: translateY(40px) scale(0); } }
+        @keyframes spark { to { opacity: 0; transform: translateY(50px) scale(0); } }
     </style>
 </head>
 <body>
-    <div id="universe-container">
-        <div id="stars"></div>
-        <div class="globe"></div>
-        <div class="shooting" style="left: 80%; animation-delay: 1s;"></div>
-        <div class="shooting" style="left: 20%; animation-delay: 3s;"></div>
-    </div>
 
-    <div class="hero">
+    <div id="universe-bg"></div>
+    <div class="shooting-star" style="left: 80%; animation-delay: 0s;"></div>
+    <div class="shooting-star" style="left: 30%; animation-delay: 2s;"></div>
+    
+    <canvas id="globe-canvas"></canvas>
+
+    <div class="content">
         <div class="cosmic-brand">COSMIC CAPITAL</div>
-        <p style="letter-spacing: 6px; color: var(--pink-neon); margin-top: 15px; font-weight: bold;">NO CAP WE ON TOP</p>
+        <p style="letter-spacing: 5px; color: white; opacity: 0.7;">NO CAP WE ON TOP</p>
+
+        <div class="balance-container">
+            <span style="color: var(--cyan-digital); font-weight: bold; text-transform: uppercase;">Energy Monitor</span>
+            <div class="bar"><div class="fill"></div></div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card"><h3>Strategic Research</h3><p>Papers and geopolitical analysis.</p></div>
+            <div class="card"><h3>Aesthetic Intel</h3><p>Style & Hair rituals.</p></div>
+            <div class="card"><h3>Cosmic Rituals</h3><p>Skincare & Amazon Picks.</p></div>
+            <div class="card"><h3>Pit Stop</h3><p>F1 Telemetry & Odd Sports.</p></div>
+            <div class="card"><h3>Eco-Strategy</h3><p>Environmental survival.</p></div>
+        </div>
     </div>
-
-    <section>
-        <div class="card" style="text-align: center; border: 1px solid var(--cyan-digital);">
-            <h3 style="color: var(--cyan-digital); margin: 0;">Energy & Focus Monitor</h3>
-            <div class="balance-bar"><div class="progress"></div></div>
-        </div>
-    </section>
-
-    <section>
-        <div class="grid">
-            <div class="card"><h3 style="color: var(--gold)">Aesthetic Intelligence</h3><p>Style & Hair rituals.</p></div>
-            <div class="card"><h3 style="color: white">The Archive</h3><p>Geopolitical papers.</p></div>
-            <div class="card"><h3 style="color: var(--green-eco)">Eco-Strategy</h3><p>Environmental analysis.</p></div>
-            <div class="card"><h3 style="color: var(--cyan-digital)">Cosmic Paws</h3><p>Pet care tips.</p></div>
-            <div class="card"><h3 style="color: #ff1801">Pit Stop</h3><p>F1 & Odd Sports.</p></div>
-        </div>
-    </section>
 
     <script>
+        // --- 1. SCRIPT DEL MUNDO 3D (WIRE FRAME DIGITAL) ---
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('globe-canvas'), antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Creamos un globo digital de "red" (Wireframe) para que no necesite imágenes
+        const geometry = new THREE.IcosahedronGeometry(2, 15);
+        const material = new THREE.MeshBasicMaterial({ 
+            color: 0x00FFFF, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.2 
+        });
+        const globe = new THREE.Mesh(geometry, material);
+        scene.add(globe);
+
+        // Añadimos un núcleo de luz pink
+        const coreGeom = new THREE.SphereGeometry(1.8, 32, 32);
+        const coreMat = new THREE.MeshBasicMaterial({ color: 0xFF007F, transparent: true, opacity: 0.05 });
+        const core = new THREE.Mesh(coreGeom, coreMat);
+        scene.add(core);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            globe.rotation.y += 0.002;
+            globe.rotation.x += 0.001;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Ajuste al cambiar tamaño de pantalla
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- 2. SCRIPT DEL GLITTER ---
         document.addEventListener('mousemove', (e) => {
             const spark = document.createElement('div');
             spark.className = 'glitter';
             spark.style.left = e.pageX + 'px';
             spark.style.top = e.pageY + 'px';
-            const colors = ['#FF007F', '#00FFFF', '#FFD700', '#2ECC71'];
+            const colors = ['#FF007F', '#00FFFF', '#FFD700', '#FFFFFF'];
             spark.style.background = colors[Math.floor(Math.random()*colors.length)];
             document.body.appendChild(spark);
             setTimeout(() => spark.remove(), 1000);
