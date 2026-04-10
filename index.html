@@ -9,114 +9,129 @@
             --pink-neon: #FF007F;
             --cyan-digital: #00FFFF;
             --gold: #FFD700;
-            --green-eco: #2ECC71;
-            --bg: #000000;
-            --glass: rgba(255, 255, 255, 0.05);
+            --bg: #050005;
+            --glass: rgba(255, 255, 255, 0.07);
         }
 
         body {
-            margin: 0; background: var(--bg); color: white;
-            font-family: 'Helvetica Neue', sans-serif;
-            overflow-x: hidden; text-align: center; scroll-behavior: smooth;
+            margin: 0; padding: 0; background-color: var(--bg); color: white;
+            font-family: 'Helvetica Neue', sans-serif; overflow-x: hidden;
+            text-align: center; scroll-behavior: smooth;
         }
 
-        /* FONDO: EL GLOBO Y EL COSMOS */
-        #universe-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            background: radial-gradient(circle at center, #0a0a0a, #000);
+        /* --- UNIVERSO DINÁMICO --- */
+        #universe {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3;
+            background: radial-gradient(circle at center, #1a001a 0%, #000 100%);
         }
 
-        .globe-css {
+        /* GLOBO 3D (RESTAURADO) */
+        .globe-3d {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 80vmax; height: 80vmax; border-radius: 50%; opacity: 0.3;
-            background: linear-gradient(90deg, transparent 0%, var(--cyan-digital) 50%, transparent 100%);
-            filter: blur(80px); animation: rotateGlobe 20s linear infinite; z-index: -1;
+            width: 70vmax; height: 70vmax; border-radius: 50%;
+            background: linear-gradient(45deg, transparent, var(--pink-neon), var(--cyan-digital), transparent);
+            filter: blur(100px); opacity: 0.2; animation: rotate 20s linear infinite; z-index: -2;
         }
 
-        @keyframes rotateGlobe { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+        @keyframes rotate { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 
-        /* HEADER */
-        .hero { padding: 100px 20px 40px; }
-        .brand-title { font-size: 1.5rem; color: var(--gold); letter-spacing: 15px; font-weight: bold; text-shadow: 0 0 20px var(--gold); }
-        .slogan { color: var(--pink-neon); letter-spacing: 5px; font-weight: bold; margin-top: 10px; text-shadow: 0 0 10px var(--pink-neon); }
+        /* --- PERRITOS ANIMADOS (Chihuahua & Beagle) --- */
+        .dog { position: fixed; font-size: 5rem; z-index: -1; pointer-events: none; filter: drop-shadow(0 0 15px var(--pink-neon)); }
+        
+        /* Chihuahua caminando */
+        .chihuahua {
+            bottom: 10%; left: -10%;
+            animation: walkRight 15s linear infinite;
+        }
+        
+        /* Beagle caminando */
+        .beagle {
+            bottom: 20%; right: -10%;
+            animation: walkLeft 18s linear infinite;
+        }
 
-        /* SECCIONES PRINCIPALES */
-        section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        @keyframes walkRight {
+            0% { left: -10%; transform: rotate(0deg) scaleX(1); }
+            50% { transform: rotate(10deg) scaleX(1); }
+            100% { left: 110%; transform: rotate(0deg) scaleX(1); }
+        }
+
+        @keyframes walkLeft {
+            0% { right: -10%; transform: rotate(0deg) scaleX(-1); }
+            50% { transform: rotate(-10deg) scaleX(-1); }
+            100% { right: 110%; transform: rotate(0deg) scaleX(-1); }
+        }
+
+        /* --- ESTRELLAS FUGACES --- */
+        .shooting-star {
+            position: absolute; width: 2px; height: 100px;
+            background: linear-gradient(to bottom, var(--cyan-digital), transparent);
+            animation: shoot 4s linear infinite; opacity: 0;
+        }
+        @keyframes shoot {
+            0% { transform: translateY(-100px) rotate(45deg); opacity: 1; }
+            100% { transform: translateY(100vh) translateX(-500px) rotate(45deg); opacity: 0; }
+        }
+
+        /* --- CONTENIDO --- */
+        header { padding: 100px 20px 40px; }
+        .brand { font-size: 2rem; color: var(--gold); letter-spacing: 15px; text-shadow: 0 0 20px var(--gold); font-weight: bold; }
+        
+        section { max-width: 1200px; margin: 0 auto; padding: 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         
         .card {
-            background: var(--glass); border: 1px solid rgba(255,255,255,0.1);
-            padding: 25px; border-radius: 20px; backdrop-filter: blur(15px);
-            transition: 0.3s; text-align: left;
+            background: var(--glass); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1); padding: 30px; border-radius: 25px;
+            text-align: left; transition: 0.3s;
         }
-        .card:hover { border-color: white; transform: translateY(-5px); }
-        h3 { margin-top: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
+        .card:hover { border-color: var(--pink-neon); transform: translateY(-10px); }
 
-        /* ELEMENTOS ESPECIALES */
-        .monitor-box { border: 1px solid var(--cyan-digital); text-align: center; }
-        .balance-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin: 15px 0; overflow: hidden; }
+        /* MONITOR */
+        .monitor { text-align: center; border: 1px solid var(--cyan-digital); margin-bottom: 40px; }
+        .bar { width: 100%; height: 12px; background: rgba(255,255,255,0.1); border-radius: 6px; overflow: hidden; margin: 15px 0; }
         .fill { width: 88%; height: 100%; background: linear-gradient(90deg, var(--pink-neon), var(--cyan-digital)); }
-        
-        .book-card { border: 2px solid var(--pink-neon); box-shadow: 0 0 20px rgba(255, 0, 127, 0.2); text-align: center; }
-        .btn { display: inline-block; margin-top: 15px; padding: 10px 20px; border: 1px solid white; color: white; text-decoration: none; border-radius: 50px; font-size: 0.8rem; }
+
+        /* ABOUT ME SECTION */
+        .about-card { border: 1px solid var(--gold); }
 
         /* GLITTER */
         .glitter { position: absolute; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; animation: spark 1s forwards; z-index: 1000; }
-        @keyframes spark { to { opacity: 0; transform: translateY(40px) scale(0); } }
+        @keyframes spark { to { opacity: 0; transform: translateY(50px) scale(0); } }
+
     </style>
 </head>
 <body>
-    <div id="universe-bg"><div class="globe-css"></div></div>
 
-    <div class="hero">
-        <div class="brand-title">COSMIC CAPITAL</div>
-        <div class="slogan">NO CAP WE ON TOP</div>
-    </div>
+    <div id="universe"></div>
+    <div class="globe-3d"></div>
+
+    <div class="dog chihuahua">🐕</div> <div class="dog beagle">🐶</div>    <div class="shooting-star" style="left: 80%; animation-delay: 1s;"></div>
+    <div class="shooting-star" style="left: 30%; animation-delay: 3s;"></div>
+
+    <header>
+        <div class="brand">COSMIC CAPITAL</div>
+        <p style="color: var(--pink-neon); letter-spacing: 5px; font-weight: bold;">NO CAP WE ON TOP</p>
+    </header>
 
     <section>
-        <div class="card monitor-box">
+        <div class="card monitor">
             <h3 style="color: var(--cyan-digital)">Energy & Focus Monitor</h3>
-            <div class="balance-bar"><div class="fill"></div></div>
+            <div class="bar"><div class="fill"></div></div>
             <p style="font-size: 0.8rem; opacity: 0.6;">Status: Optimal Alignment</p>
         </div>
-    </section>
 
-    <section>
-        <div class="card book-card">
-            <h2 style="color: var(--pink-neon); margin: 0;">NO CAP WE ON TOP</h2>
-            <p><i>The geopolitical guide for a generation redefining everything.</i></p>
-            <span class="btn">Coming Soon 2026</span>
-        </div>
-    </section>
-
-    <section>
         <div class="grid">
-            <div class="card">
-                <h3 style="color: var(--gold)">The Archive (Papers)</h3>
-                <p>Strategic research on global justice, digital power shifts, and cosmic capitalism manifesto.</p>
-                <a href="#" class="btn">View Papers</a>
+            <div class="card about-card">
+                <h3 style="color: var(--gold)">About Laura Pamela</h3>
+                <p>Founder & Strategist. Merging Global Pop Aesthetics with Deep Intellectual Excellence. Redefining Geopolitics through a Cosmic Lens.</p>
             </div>
-            <div class="card">
-                <h3 style="color: var(--pink-neon)">Aesthetic Intelligence</h3>
-                <p>Style combinations and hair rituals. The semiotics of power through a global pop lens.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--cyan-digital)">Cosmic Rituals</h3>
-                <p>High-performance skincare and mental health protocols for the intellectual elite.</p>
-                <a href="#" class="btn">Amazon Picks</a>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--green-eco)">Eco-Strategy</h3>
-                <p>Environmental geopolitics: Why the planet's health is the ultimate board game for survival.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: #FFB6C1">Cosmic Paws</h3>
-                <p>Strategic pet care and health tips for your loyal allies. Discipline meets affection.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: #ff1801">Pit Stop & Odd Sports</h3>
-                <p>F1 telemetry metaphors and the adrenaline of unconventional competition. Rare is the new elite.</p>
-            </div>
+            
+            <div class="card"><h3>Strategic Papers</h3><p>Geopolitics and Power analysis.</p></div>
+            <div class="card"><h3>Style Intel</h3><p>Aesthetic rituals and hair strategy.</p></div>
+            <div class="card"><h3>Cosmic Paws</h3><p>Pet care strategy for loyal allies.</p></div>
+            <div class="card"><h3>Pit Stop</h3><p>F1 Telemetry and Race strategy.</p></div>
+            <div class="card"><h3>Odd Sports</h3><p>The adrenaline of the unconventional.</p></div>
         </div>
     </section>
 
@@ -126,7 +141,7 @@
             spark.className = 'glitter';
             spark.style.left = e.pageX + 'px';
             spark.style.top = e.pageY + 'px';
-            const colors = ['#FF007F', '#00FFFF', '#FFD700', '#2ECC71', '#FFFFFF'];
+            const colors = ['#FF007F', '#00FFFF', '#FFD700', '#FFFFFF'];
             spark.style.background = colors[Math.floor(Math.random()*colors.length)];
             document.body.appendChild(spark);
             setTimeout(() => spark.remove(), 1000);
