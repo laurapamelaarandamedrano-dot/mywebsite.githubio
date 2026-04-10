@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laura Pamela | Cosmic Capitalism & Global Pop</title>
+    <title>Laura Pamela Aranda Medrano | Cosmic Capital</title>
     <style>
         /* --- CORE CÓSMICO (ADN DEL DISEÑO) --- */
         :root {
-            --bg-deep: #030303; /* Negro casi absoluto */
-            --text-main: #FFFFFF;
-            --text-muted: #AAAAAA;
-            --gold-glow: #FFD700; /* Capitalismo */
-            --pink-pop: #FF69B4; /* Cultura Pop */
-            --cyan-digital: #00FFFF; /* Revolución */
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-deep: #000000; /* Negro absoluto */
+            --pink-futuristic: #FF007F; /* Rosa Neón Intenso */
+            --cyan-digital: #00FFFF; /* Revolución Digital */
+            --gold-cosmic: #FFD700; /* Capitalismo */
+            --white-core: #FFFFFF;
+            --glow-pink: 0 0 30px rgba(255, 0, 127, 0.8);
+            --glow-gold: 0 0 30px rgba(255, 215, 0, 0.8);
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
             margin: 0;
             padding: 0;
             background-color: var(--bg-deep);
-            color: var(--text-main);
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            overflow-x: hidden;
+            color: var(--white-core);
+            font-family: 'Helvetica Neue', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            text-align: center;
+            perspective: 1000px; /* Para efectos 3D en la página */
         }
 
-        /* --- CAPA 1: FONDO DE ESTRELLAS ANIMADO (PARALLAX) --- */
+        /* --- FONDO DE ESTRELLAS ANIMADO (MUCHO MOVIMIENTO) --- */
         #starfield {
             position: fixed;
             top: 0;
@@ -39,257 +42,126 @@
             height: 100%;
             z-index: -2;
             background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
-                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
-            background-size: 550px 550px, 350px 350px, 250px 250px;
-            background-position: 0 0, 40px 60px, 130px 270px;
-            animation: starScroll 150s linear infinite;
+                radial-gradient(white, rgba(255,255,255,.3) 1px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.2) 1.5px, transparent 2.5px),
+                radial-gradient(var(--pink-futuristic), rgba(255, 0, 127, .1) 2px, transparent 3px);
+            background-size: 400px 400px, 300px 300px, 200px 200px;
+            background-position: 0 0, 20px 30px, 50px 70px;
+            animation: starScroll 120s linear infinite; /* Gira más rápido */
         }
 
         @keyframes starScroll {
-            from { background-position: 0 0, 40px 60px, 130px 270px; }
-            to { background-position: -1000px -1000px, -960px -940px, -870px -730px; }
+            from { background-position: 0 0, 20px 30px, 50px 70px; }
+            to { background-position: -2000px -2000px, -1980px -1970px, -1950px -1930px; }
         }
 
-        /* --- CAPA 2: EFECTO GLITTER (CSS + JS) --- */
+        /* --- SISTEMA DE GLITTER INTERACTIVO (CSS) --- */
         .glitter {
             position: absolute;
-            width: 5px;
-            height: 5px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             pointer-events: none;
-            opacity: 0.8;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            animation: moveGlitter 1.2s ease-out forwards;
+            opacity: 0.9;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+            animation: glitterFade 1.2s ease-out forwards;
             z-index: 9999;
         }
 
-        @keyframes moveGlitter {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: translateY(40px) scale(0); opacity: 0; }
+        @keyframes glitterFade {
+            0% { transform: scale(1); opacity: 0.9; }
+            100% { transform: translateY(60px) scale(0); opacity: 0; }
         }
 
-        /* --- SECCIONES Y MAQUETACIÓN --- */
-        section {
-            width: 100%;
-            max-width: 1000px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
-            box-sizing: border-box;
-            position: relative;
-        }
-
-        /* --- PORTADA (MAIN CHARACTER ENERGY) --- */
+        /* --- PORTADA DEFINITIVA (MAQUETACIÓN) --- */
         #home {
-            text-align: center;
+            position: relative;
+            padding: 40px;
+            max-width: 90vw;
+            /* MUCHO MOVIMIENTO EN TODA LA PAGINA (EFECTO FLOTANTE) */
+            animation: floatPage 10s ease-in-out infinite alternate;
         }
 
-        h1 {
-            font-size: 4rem;
-            letter-spacing: 12px;
+        @keyframes floatPage {
+            0% { transform: translateY(0px) rotateX(0deg); }
+            50% { transform: translateY(-10px) rotateX(2deg); }
+            100% { transform: translateY(10px) rotateX(-2deg); }
+        }
+
+        /* TÍTULO INICIAL: COSMIC CAPITAL (MÁXIMO BRILLO) */
+        .cosmic-capital {
+            font-size: 1.2rem;
+            color: var(--gold-cosmic);
             text-transform: uppercase;
-            margin: 0;
-            background: linear-gradient(to right, #fff, var(--gold-glow), #fff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shineGold 4s linear infinite, pulseGlow 3s ease-in-out infinite alternate;
+            letter-spacing: 6px;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            display: inline-block;
+            filter: drop-shadow(var(--glow-gold));
+            animation: shineGold 3s linear infinite, glowPulseGold 1s ease-in-out infinite alternate;
         }
 
         @keyframes shineGold {
-            to { background-position: 200% center; }
+            0% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
+            100% { filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1)); }
         }
 
-        @keyframes pulseGlow {
-            from { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.4)); }
-            to { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7)); }
+        @keyframes glowPulseGold {
+            from { text-shadow: 0 0 5px rgba(255, 215, 0, 0.4); }
+            to { text-shadow: 0 0 15px rgba(255, 215, 0, 1); }
+        }
+
+        /* TU NOMBRE: UNA SOLA LÍNEA | ROSA FUTURISTA (MUCHO RESPLANDOR) */
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            margin: 0;
+            color: var(--pink-futuristic);
+            filter: drop-shadow(var(--glow-pink));
+            animation: glowPulsePink 3s ease-in-out infinite alternate;
+            /* Requisito 1: Una sola línea (No se divide nunca) */
+            white-space: nowrap; 
+        }
+
+        @keyframes glowPulsePink {
+            from { filter: drop-shadow(0 0 10px rgba(255, 0, 127, 0.6)); }
+            to { filter: drop-shadow(0 0 35px rgba(255, 0, 127, 1)); }
         }
 
         .title-sub {
-            font-size: 1.4rem;
-            color: var(--text-muted);
-            letter-spacing: 5px;
+            font-size: 1.1rem;
+            color: #CCCCCC;
+            letter-spacing: 4px;
             margin-top: 10px;
-            margin-bottom: 3rem;
             font-weight: 300;
         }
 
         .manifesto-tag {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 20px;
             border-radius: 50px;
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--cyan-digital);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+            display: inline-block;
+            margin-top: 2rem;
+            animation: heartbeat 2s infinite alternate;
         }
 
-        /* --- SECCIÓN PAPERS (THE INTELLECTUAL AXIS) --- */
-        h2.section-title {
-            font-size: 2.8rem;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            margin-bottom: 4rem;
-            position: relative;
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
         }
 
-        h2.section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-        }
-
-        #papers .section-title {
-            color: var(--gold-glow);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-        }
-
-        #papers .section-title::after {
-            background-color: var(--gold-glow);
-            box-shadow: 0 0 10px var(--gold-glow);
-        }
-
-        .papers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            width: 100%;
-        }
-
-        .paper-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 35px;
-            border-radius: 16px;
-            border: 1px solid var(--glass-border);
-            text-align: left;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .paper-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transition: 0.6s;
-        }
-
-        .paper-card:hover::before {
-            left: 100%;
-        }
-
-        .paper-card:hover {
-            border-color: rgba(255, 215, 0, 0.4);
-            background: rgba(255, 215, 0, 0.03);
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
-        }
-
-        .paper-card h3 {
-            margin: 0 0 12px 0;
-            color: var(--text-main);
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-        }
-
-        .paper-card p {
-            margin: 0 0 20px 0;
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .paper-link {
-            color: var(--cyan-digital);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            position: relative;
-        }
-
-        .paper-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -3px;
-            left: 0;
-            background-color: var(--cyan-digital);
-            transition: var(--transition-smooth);
-        }
-
-        .paper-card:hover .paper-link::after {
-            width: 100%;
-        }
-
-        /* --- SECCIÓN LIFESTYLE (COSMIC RITUALS) --- */
-        #lifestyle .section-title {
-            color: var(--pink-pop);
-            text-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
-        }
-
-        #lifestyle .section-title::after {
-            background-color: var(--pink-pop);
-            box-shadow: 0 0 10px var(--pink-pop);
-        }
-
-        .ritual-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            width: 100%;
-        }
-
-        .ritual-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 30px;
-            border-radius: 16px;
-            border: 1px solid var(--glass-border);
-            transition: var(--transition-smooth);
-            text-align: left;
-        }
-
-        .ritual-card:hover {
-            border-color: rgba(255, 105, 180, 0.4);
-            background: rgba(255, 105, 180, 0.03);
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.15);
-        }
-
-        .ritual-card h3 {
-            color: var(--text-main);
-            margin-top: 0;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        .ritual-card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin: 0;
+        /* Media queries para que se vea bien en celulares largos */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 6px;
+            }
         }
 
     </style>
@@ -299,41 +171,45 @@
     <div id="starfield"></div>
 
     <section id="home">
-        <div class="manifesto-tag">Redefining Geopolitics</div>
-        <h1>Laura Pamela</h1>
-        <p class="title-sub">Aranda Medrano</p>
-        <p style="max-width: 650px; line-height: 1.8; color: #ccc; font-size: 1.1rem; font-weight: 300;">
-            Intellectual excellence blends with pop culture flair and the strategic vision of a generation that refuses to settle. Rewriting the world in a global, pop-infused, and transformative key.
+        <div class="cosmic-capital">Cosmic Capital</div>
+        
+        <h1>Laura Pamela Aranda Medrano</h1>
+        
+        <p class="title-sub">The New Standard in Academia</p>
+        
+        <p style="max-width: 600px; line-height: 1.8; color: #ccc; font-size: 1.1rem; font-weight: 300; margin-top: 30px;">
+             Rewriting the world in a global, pop-infused, and transformative key. Intellectual excellence blends with the strategic vision of a generation that refuses to settle.
         </p>
+        
+        <div class="manifesto-tag">Rewriting Geopolitics</div>
     </section>
 
-    <section id="papers">
-        <h2 class="section-title">Strategic Research</h2>
-        
-        <div class="papers-grid">
-            <div class="paper-card">
-                <h3>Cosmic Capitalism Manifesto</h3>
-                <p>Analyzing how digital value systems and cosmic aesthetics create new geopolitical leverage beyond traditional borders.</p>
-                <a href="#" class="paper-link">Read Publication →</a>
-            </div>
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            // Creamos la partícula de glitter
+            const spark = document.createElement('div');
+            spark.className = 'glitter';
+            
+            // Posición basada en el mouse
+            spark.style.left = e.pageX + 'px';
+            spark.style.top = e.pageY + 'px';
+            
+            // Colores aleatorios de tu marca (Rosa, Cyan, Oro)
+            const colors = ['#FF007F', '#FFFFFF', '#00FFFF', '#FFD700'];
+            spark.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Tamaño aleatorio para naturalidad
+            const size = Math.random() * 8 + 2 + 'px'; // Hasta 10px
+            spark.style.width = size;
+            spark.style.height = size;
 
-            <div class="paper-card">
-                <h3>Soft Power in Gen Z Aesthetics</h3>
-                <p>Examining the strategic influence of viral trends, narratives, and digital culture on global justice movements.</p>
-                <a href="#" class="paper-link">Read Publication →</a>
-            </div>
-        </div>
-
-    </section>
-
-    <section id="lifestyle">
-        <h2 class="section-title">Cosmic Rituals</h2>
-        
-        <div class="ritual-container">
-            <div class="ritual-card">
-                <h3>Mental Resilience</h3>
-                <p>Deep work strategies and mental clarity rituals essential for navigating digital chaos and intellectual leadership.</p>
-            </div>
-            <div class="ritual-card">
-                <h3>Aesthetic Logistics</h3>
-                <p>Soft power diplomacy requires impeccable aesthetics. Skincare as a ritual of strategic self-care and presence
+            document.body.appendChild(spark);
+            
+            // Borramos la partícula después de la animación
+            setTimeout(() => {
+                spark.remove();
+            }, 1200); // 1.2 segundos
+        });
+    </script>
+</body>
+</html>
