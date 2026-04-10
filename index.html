@@ -225,6 +225,35 @@
         }
 
     </style>
+    /* EL GLOBO TERRÁQUEO GIRATORIO */
+.globe-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 150vmax; 
+    height: 150vmax;
+    border-radius: 50%;
+    /* Gradiente que simula profundidad y océanos */
+    background: radial-gradient(circle at center, rgba(33, 97, 140, 0.2) 0%, transparent 60%),
+                radial-gradient(circle at 30% 30%, rgba(93, 173, 226, 0.3) 0%, transparent 40%),
+                #050505;
+    opacity: 0.4;
+    z-index: -2;
+    transform-origin: center; /* Crucial para que gire sobre su propio eje */
+    
+    /* ESTA ES LA LÍNEA MÁGICA */
+    animation: spinGlobe 120s linear infinite; 
+}
+
+/* LA DEFINICIÓN DEL MOVIMIENTO */
+@keyframes spinGlobe {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
 </head>
 <body>
 
