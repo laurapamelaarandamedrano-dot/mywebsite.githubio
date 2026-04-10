@@ -1,182 +1,165 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmic Capital | No Cap We On Top</title>
+    <title>Laura Pamela | Cosmic Capital Executive</title>
     <style>
         :root {
-            --pink: #FF007F;
-            --cyan: #00FFFF;
-            --gold: #FFD700;
-            --green: #2ECC71;
-            --glass: rgba(255, 255, 255, 0.08);
-            --bg: #050005;
+            --accent: #00FFFF;
+            --secondary: #FF007F;
+            --gold: #D4AF37;
+            --bg-deep: #030303;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #F0F0F0;
         }
 
         body {
-            margin: 0; padding: 0; background: var(--bg); color: white;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            overflow-x: hidden; text-align: center; scroll-behavior: smooth;
+            margin: 0; background: var(--bg-deep); color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', Helvetica, sans-serif;
+            overflow-x: hidden; line-height: 1.6;
         }
 
-        /* --- EL GLOBO GIRATORIO (ULTRA-VISIBLE & RÁPIDO) --- */
-        #universe-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            display: flex; justify-content: center; align-items: center; background: black;
+        /* --- PROFESSIONAL BACKGROUND ENGINE --- */
+        #bg-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at center, #0a0a15 0%, #000 100%);
         }
 
-        .globe-visual {
-            width: 75vmax; height: 75vmax;
-            border-radius: 50%;
+        /* DATA-DRIVEN GLOBE (SOPHISTICATED ROTATION) */
+        .data-globe {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 70vmax; height: 70vmax; border-radius: 50%;
             background: 
-                repeating-linear-gradient(90deg, transparent 0, transparent 40px, rgba(0, 255, 255, 0.1) 40px, rgba(0, 255, 255, 0.1) 41px),
-                repeating-linear-gradient(0deg, transparent 0, transparent 40px, rgba(255, 0, 127, 0.1) 40px, rgba(255, 0, 127, 0.1) 41px),
-                radial-gradient(circle at 30% 30%, var(--cyan) 0%, var(--pink) 60%, #111 100%);
-            box-shadow: inset -50px -50px 100px rgba(0,0,0,0.9), 0 0 60px rgba(255, 0, 127, 0.2);
-            animation: rotateFast 8s linear infinite;
+                repeating-linear-gradient(90deg, transparent 0, transparent 60px, rgba(0, 255, 255, 0.03) 60px, rgba(0, 255, 255, 0.03) 61px),
+                repeating-linear-gradient(0deg, transparent 0, transparent 60px, rgba(255, 0, 127, 0.03) 60px, rgba(255, 0, 127, 0.03) 61px),
+                radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.1), rgba(255, 0, 127, 0.05), transparent);
+            animation: rotateGlobe 40s linear infinite;
         }
 
-        @keyframes rotateFast { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes rotateGlobe { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 
-        /* --- BRANDING --- */
-        header { padding: 80px 20px 60px; position: relative; z-index: 5; }
-        .brand { font-size: 2.2rem; color: var(--gold); letter-spacing: 12px; font-weight: bold; text-shadow: 0 0 25px var(--gold); text-transform: uppercase; margin: 0; }
-        .slogan { color: var(--pink); letter-spacing: 5px; font-weight: bold; margin-top: 15px; text-shadow: 0 0 10px var(--pink); }
+        /* --- TYPOGRAPHY & LAYOUT --- */
+        header { padding: 100px 20px 60px; text-align: center; }
+        .brand { font-size: 1rem; color: var(--gold); letter-spacing: 12px; font-weight: 300; text-transform: uppercase; margin-bottom: 10px; }
+        .hero-name { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -1px; margin: 0; }
 
-        /* --- GRID UNIFORME --- */
-        .main-container { max-width: 1200px; margin: 0 auto; padding: 0 20px 100px; position: relative; z-index: 1; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; align-items: stretch; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
         
+        /* GRID SYSTEM */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; }
+
+        /* INSTITUTIONAL CARDS */
         .card {
-            background: var(--glass); backdrop-filter: blur(25px);
-            border: 1px solid rgba(255,255,255,0.1); padding: 35px; border-radius: 30px;
-            text-align: left; transition: 0.4s; display: flex; flex-direction: column;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px; padding: 40px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex; flex-direction: column;
         }
-        .card:hover { border-color: var(--cyan); transform: translateY(-10px); background: rgba(255, 255, 255, 0.12); }
+        .card:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--accent); transform: translateY(-5px); }
 
-        h3 { color: var(--cyan); text-transform: uppercase; letter-spacing: 2px; margin: 0 0 15px 0; font-size: 1.1rem; }
-        p { font-size: 0.95rem; line-height: 1.6; opacity: 0.9; margin: 0; flex-grow: 1; }
+        h3 { color: var(--accent); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 25px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; }
+        
+        /* PAPER LIST STYLING */
+        .paper-item { margin-bottom: 25px; list-style: none; }
+        .paper-title { display: block; font-weight: 600; font-size: 0.95rem; color: #fff; margin-bottom: 5px; }
+        .paper-meta { display: block; font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .paper-link { color: var(--secondary); text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-top: 8px; display: inline-block; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .paper-link:hover { border-bottom: 1px solid var(--secondary); }
 
-        /* MONITOR & BOTONES */
-        .monitor-card { border: 1px solid var(--cyan); text-align: center; }
-        .bar { width: 100%; height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; margin: 20px 0; overflow: hidden; }
-        .fill { width: 88%; height: 100%; background: linear-gradient(90deg, var(--pink), var(--cyan)); }
-        .btn { display: inline-block; margin-top: 20px; padding: 12px 25px; border: 1px solid white; color: white; text-decoration: none; border-radius: 50px; font-size: 0.8rem; text-align: center; text-transform: uppercase; transition: 0.3s; }
-        .btn:hover { background: white; color: black; }
+        /* EXECUTIVE MONITOR */
+        .monitor-wrap { text-align: center; max-width: 600px; margin: 0 auto 60px; }
+        .bar-container { width: 100%; height: 4px; background: rgba(255,255,255,0.1); margin: 20px 0; border-radius: 2px; }
+        .bar-active { width: 88%; height: 100%; background: var(--accent); box-shadow: 0 0 15px var(--accent); }
 
-        /* GLITTER */
-        .glitter { position: absolute; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; animation: spark 1s forwards; z-index: 1000; }
-        @keyframes spark { to { opacity: 0; transform: translateY(50px) scale(0); } }
+        /* BUTTONS */
+        .btn-primary { 
+            background: transparent; border: 1px solid #fff; color: #fff; 
+            padding: 12px 30px; border-radius: 4px; font-size: 0.7rem; 
+            text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s;
+        }
+        .btn-primary:hover { background: #fff; color: #000; }
+
     </style>
 </head>
 <body>
 
-    <div id="universe-container">
-        <div class="globe-visual"></div>
+    <div id="bg-canvas">
+        <div class="data-globe"></div>
     </div>
 
     <header>
-        <h1 class="brand">COSMIC CAPITAL</h1>
-        <div class="slogan">NO CAP WE ON TOP</div>
+        <div class="brand">Cosmic Capital Agency</div>
+        <h1 class="hero-name">Laura Pamela Aranda Medrano</h1>
     </header>
 
-    <div class="main-container">
+    <div class="container">
+        
+        <div class="monitor-wrap">
+            <span style="font-size: 0.7rem; letter-spacing: 5px; color: var(--accent);">SYSTEM FOCUS: OPTIMIZED</span>
+            <div class="bar-container"><div class="bar-active"></div></div>
+        </div>
+
         <div class="grid">
             
-            <div class="card" style="border: 1px solid var(--gold);">
-                <h3 style="color: var(--gold);">About Laura Pamela</h3>
-                <p>Founder & Strategist. Merging Global Pop Aesthetics with Deep Intellectual Excellence. Redefining Geopolitics through a Cosmic Lens.</p>
-            </div>
-
-            <div class="card monitor-card">
-                <h3>Energy & Focus Monitor</h3>
-                <div class="bar"><div class="fill"></div></div>
-                <p>Status: Optimized Alignment</p>
+            <div class="card">
+                <h3>Executive Summary</h3>
+                <p style="font-size: 1.1rem; color: var(--gold);">Global Strategist & Researcher</p>
+                <p style="opacity: 0.7; font-size: 0.9rem;">Youth delegate at YOUNGA in collaboration with the United Nations. Specialist in AI-driven political communication, international cosmic law, and gendered global governance reform.</p>
+                <p style="opacity: 0.7; font-size: 0.9rem;">Bridging the gap between deep academic rigor and the semiotics of global pop aesthetics.</p>
             </div>
 
             <div class="card">
-               <div class="card">
-    <h3>Strategic Papers & Global Intel</h3>
-   <div class="card">
-    <h3>Strategic Papers & Global Intel</h3>
-    <p>A curated archive of published research on digital power, cosmic law, and global governance.</p>
-    
-    <ul style="list-style: none; padding: 0; margin: 25px 0;">
-        <li style="margin-bottom: 20px; border-left: 2px solid var(--cyan); padding-left: 15px;">
-            <span style="display: block; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">DIGITAL DEMOCRACY & THE ALGORITHMIC MEXICO (2025)</span>
-            <p style="font-size: 0.8rem; margin: 5px 0; opacity: 0.7;">An analysis of structural distrust and Gen Z political interaction in algorithm-mediated spaces.</p>
-            <a href="https://teemich.org.mx/wp-content/uploads/2025/08/Revista-IUS-ELECTORAL-5-1.pdf" target="_blank" style="color: var(--pink); font-size: 0.75rem; text-decoration: none; font-weight: bold;">[ READ FULL PAPER ]</a>
-        </li>
-
-        <li style="margin-bottom: 20px; border-left: 2px solid var(--cyan); padding-left: 15px;">
-            <span style="display: block; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">COSMIC LAW & THE COLONIZATION OF MARS (2025)</span>
-            <p style="font-size: 0.8rem; margin: 5px 0; opacity: 0.7;">Exploring the legal and ethical implications of extraterrestrial resource appropriation and global injustice.</p>
-            <a href="https://www.revistaabogacia.com/derecho-internacional-cosmico-y-la-colonizacion-de-marte/" target="_blank" style="color: var(--pink); font-size: 0.75rem; text-decoration: none; font-weight: bold;">[ READ FULL PAPER ]</a>
-        </li>
-
-        <li style="margin-bottom: 20px; border-left: 2px solid var(--cyan); padding-left: 15px;">
-            <span style="display: block; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">WOMEN, WAR & GLOBAL GOVERNANCE (2024)</span>
-            <p style="font-size: 0.8rem; margin: 5px 0; opacity: 0.7;">A gendered reform proposal for the UN, focusing on the invisibility of women in peace architectures.</p>
-            <a href="https://www.ourgenpeace.com" target="_blank" style="color: var(--pink); font-size: 0.75rem; text-decoration: none; font-weight: bold;">[ READ FULL PAPER ]</a>
-        </li>
-
-        <li style="margin-bottom: 20px; border-left: 2px solid var(--cyan); padding-left: 15px;">
-            <span style="display: block; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">THE RETURN OF PROTECTIONISM (2023)</span>
-            <p style="font-size: 0.8rem; margin: 5px 0; opacity: 0.7;">Geoeconomic mapping and the shift from global liberalism to fragmented power dynamics.</p>
-            <a href="https://www.researchgate.net/publication/390544608_The_Return_of_Protectionism_Between_the_Ghosts_of_1929_and_the_New_Geoeconomic_Map" target="_blank" style="color: var(--pink); font-size: 0.75rem; text-decoration: none; font-weight: bold;">[ ACCESS RESEARCH ]</a>
-        </li>
-    </ul>
-
-    <a href="#" class="btn" style="width: 100%; box-sizing: border-box; display: block;">Access Full Repository</a>
-</div>
-
-            <div class="card" style="border: 1px solid var(--green);">
-                <h3 style="color: var(--green);">Eco-Strategy</h3>
-                <p>Environmental geopolitics and the future of sustainable survival. Applied intelligence for the planet.</p>
-            </div>
-
-            <div class="card" style="border: 1px solid var(--pink);">
-                <h3 style="color: var(--pink);">Amazon Essentials</h3>
-                <p>Curated tools and products for a strategic Glow Up. High-impact presence and radiant energy.</p>
-                <a href="#" class="btn">Glow Up List</a>
+                <h3>Published Intelligence</h3>
+                <ul style="padding: 0; margin: 0;">
+                    <li class="paper-item">
+                        <span class="paper-title">Digital Democracy & Algorithmic Mexico (2025)</span>
+                        <span class="paper-meta">IUS-ELECTORAL Digital Journal</span>
+                        <a href="https://teemich.org.mx/wp-content/uploads/2025/08/Revista-IUS-ELECTORAL-5-1.pdf" target="_blank" class="paper-link">VIEW DOSSIER →</a>
+                    </li>
+                    <li class="paper-item">
+                        <span class="paper-title">Cosmic Law & Mars Colonization (2025)</span>
+                        <span class="paper-meta">Abogacía Journal</span>
+                        <a href="https://www.revistaabogacia.com/derecho-internacional-cosmico-y-la-colonizacion-de-marte/" target="_blank" class="paper-link">VIEW DOSSIER →</a>
+                    </li>
+                    <li class="paper-item">
+                        <span class="paper-title">Women, War & Global Governance (2024)</span>
+                        <span class="paper-meta">Our GenPeace Campaign (UK)</span>
+                        <a href="http://www.ourgenpeace.com" target="_blank" class="paper-link">VIEW DOSSIER →</a>
+                    </li>
+                </ul>
+                <button class="btn-primary" style="margin-top: auto;">Access Full Archive</button>
             </div>
 
             <div class="card">
-                <h3>Cosmic Pop Station</h3>
-                <p>The curated soundtrack of the empire. Geopolitical vibes and high-energy pop playlists.</p>
-                <a href="#" class="btn">Spotify</a>
+                <h3>Environmental Strategy</h3>
+                <p style="opacity: 0.7;">Analyzing the intersection of climate crises and geoeconomic power shifts. Exploring the future of protectionism and regionalized technological competition.</p>
+                <div style="margin-top: 20px; border-top: 1px solid var(--glass-border); padding-top: 15px;">
+                    <span class="paper-meta">Key Research: The Return of Protectionism (2023)</span>
+                </div>
+            </div>
+
+            <div class="card" style="border-color: var(--gold);">
+                <h3>The Manifesto: No Tacos, No War</h3>
+                <p style="font-style: italic; color: #fff;">"Mexico Beyond the Wall: A Manifesto for a Generation That Refuses to Be Silent."</p>
+                <p style="font-size: 0.85rem; opacity: 0.6;">A raw, multidimensional exploration of identity, history, and social resistance. Available internationally via Amazon.</p>
+                <a href="https://www.amazon.com.mx/Manifesto-Gen-Attempt-Researcher-Silence-ebook/dp/B0D6V6XGZW" target="_blank" class="btn-primary" style="text-align:center; border-color: var(--gold); color: var(--gold);">Order Edition</a>
             </div>
 
             <div class="card">
                 <h3>Aesthetic Intelligence</h3>
-                <p>The semiotics of power dressing. Hair rituals and style as a strategic communication tool.</p>
+                <p style="opacity: 0.7;">The semiotics of style as a strategic communication tool. Curating the visual language of modern influence and high-performance lifestyle.</p>
             </div>
 
             <div class="card">
-                <h3>Cosmic Paws</h3>
-                <p>Strategic care protocols for your loyal companions. Discipline meets pure loyalty.</p>
-            </div>
-
-            <div class="card">
-                <h3 style="color: #ff1801;">Pit Stop & F1</h3>
-                <p>Telemetry, race craft, and the adrenaline of Formula 1. High-speed performance analysis.</p>
+                <h3>Performance Analytics (F1)</h3>
+                <p style="opacity: 0.7;">Decoding high-speed telemetry and race strategy metaphors. Where elite athleticism meets geopolitical logistics.</p>
             </div>
 
         </div>
     </div>
 
-    <script>
-        document.addEventListener('mousemove', (e) => {
-            const spark = document.createElement('div');
-            spark.className = 'glitter';
-            spark.style.left = e.pageX + 'px';
-            spark.style.top = e.pageY + 'px';
-            const colors = ['#FF007F', '#00FFFF', '#FFD700', '#FFFFFF'];
-            spark.style.background = colors[Math.floor(Math.random()*colors.length)];
-            document.body.appendChild(spark);
-            setTimeout(() => spark.remove(), 1000);
-        });
-    </script>
 </body>
 </html>
