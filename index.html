@@ -23,18 +23,17 @@
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
             background: #000; color: white;
-            font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Helvetica, sans-serif;
             overflow-x: hidden;
         }
 
-        /* --- FUTURISTIC UNIVERSE ENGINE --- */
+        /* --- BACKGROUND ENGINE --- */
         #bg-canvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at center, #0a0a15 0%, #000 100%);
             display: flex; justify-content: center; align-items: center;
         }
 
-        /* DATA GLOBE */
         .data-globe {
             position: absolute; width: 75vmax; height: 75vmax; border-radius: 50%;
             background: 
@@ -44,7 +43,6 @@
             animation: rotateGlobe 50s linear infinite;
         }
 
-        /* BLUE HALO (ROLLING FAST) */
         .globe-halo {
             position: absolute; width: 78vmax; height: 78vmax; border-radius: 50%;
             border-top: 3px solid var(--accent); filter: blur(12px);
@@ -54,45 +52,43 @@
 
         @keyframes rotateGlobe { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* --- INTERFACE LAYOUT --- */
+        /* --- LAYOUT --- */
         .interface { position: relative; z-index: 10; padding: 60px 20px; max-width: 1400px; margin: 0 auto; }
-        
-        header { text-align: center; margin-bottom: 60px; }
+        header { text-align: center; margin-bottom: 50px; }
         .brand { font-size: 0.9rem; color: var(--gold); letter-spacing: 12px; font-weight: 300; text-transform: uppercase; }
         .hero-name { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -1px; margin: 10px 0; }
 
-        .monitor-panel {
-            background: rgba(0, 255, 255, 0.05); border: 1px solid var(--accent);
-            padding: 20px; max-width: 400px; margin: 0 auto 50px; text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(430px, 1fr)); gap: 30px; }
 
         .card {
             background: var(--glass); backdrop-filter: blur(40px);
-            border: 1px solid var(--border); border-radius: 15px; padding: 35px;
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid var(--border); border-radius: 20px; padding: 35px;
+            transition: 0.4s;
         }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255,255,255,0.06); }
+        .card:hover { border-color: var(--accent); background: rgba(255,255,255,0.06); }
 
-        h3 { color: var(--accent); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        h2 { font-size: 1.3rem; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; }
+        h3 { color: var(--gold); font-size: 1rem; margin-top: 20px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        h4 { color: var(--accent); font-size: 0.85rem; margin-top: 15px; }
 
-        /* CONTENT STYLING */
-        p { font-size: 0.9rem; line-height: 1.6; opacity: 0.8; margin-bottom: 15px; }
+        p, li { font-size: 0.85rem; line-height: 1.6; opacity: 0.8; margin-bottom: 8px; }
+        ul { padding-left: 15px; list-style: square; }
         .highlight { color: var(--accent); font-weight: bold; }
-        .paper-item { margin-bottom: 20px; border-left: 2px solid var(--accent); padding-left: 15px; }
-        .paper-link { color: var(--secondary); text-decoration: none; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        
+        .divider { border-top: 1px solid var(--border); margin: 20px 0; }
+        a { color: var(--accent); text-decoration: none; font-weight: bold; font-size: 0.8rem; }
+        a:hover { color: var(--secondary); text-decoration: underline; }
+
+        /* TABLES */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.8rem; }
+        th, td { padding: 8px; border-bottom: 1px solid var(--border); text-align: left; }
+        th { color: var(--accent); }
+
         .btn { 
             background: transparent; border: 1px solid #fff; color: #fff; padding: 10px 20px; 
             font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s;
+            display: inline-block; text-align: center; margin-top: 10px; text-decoration: none;
         }
         .btn:hover { background: #fff; color: #000; }
-
-        /* F1 TABLE */
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.8rem; }
-        td { padding: 8px; border-bottom: 1px solid var(--border); }
     </style>
 </head>
 <body>
@@ -108,73 +104,114 @@
             <h1 class="hero-name">Laura Pamela Aranda Medrano</h1>
         </header>
 
-        <div class="monitor-panel">
-            <span style="font-size: 0.7rem; letter-spacing: 5px;">SYSTEM FOCUS: OPTIMIZED</span>
-            <div style="width: 100%; height: 2px; background: rgba(255,255,255,0.1); margin: 15px 0;">
-                <div style="width: 88%; height: 100%; background: var(--accent); box-shadow: 0 0 15px var(--accent);"></div>
-            </div>
-            <p style="font-size: 0.6rem; opacity: 0.6; margin: 0;">Global Strategic Alignment: Active</p>
-        </div>
-
         <div class="grid">
             
-            <div class="card" style="grid-column: 1 / -1; border: 1px solid var(--accent);">
-                <h3>UN for Dummies: The Global Group Chat 🌎</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div class="card" style="grid-column: 1 / -1; border-top: 2px solid var(--accent);">
+                <h2>UN for Dummies: The Global Group Chat 🌎</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                     <div>
-                        <h4 style="color: var(--gold);">The General Assembly</h4>
-                        <p>The global group chat. Every country gets 1 vote. Resolutions are <i>recommendations</i>, not laws.</p>
+                        <h3>The General Assembly (GA)</h3>
+                        <p>The global group chat. All 193 countries. 1 vote each. Decisions are recommendations.</p>
                     </div>
                     <div>
-                        <h4 style="color: var(--secondary);">The Security Council</h4>
-                        <p>The Admins. The "Big 5" have <b>Veto Power</b> to delete any resolution they don't like.</p>
+                        <h3>The Security Council (UNSC)</h3>
+                        <p>The Admins. 15 members. The "Big 5" (P5) have <b>Veto Power</b> to delete any resolution.</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Strategic Research</h3>
-                <div class="paper-item">
-                    <span style="display:block; font-weight:600;">Digital Democracy & Algorithms (2025)</span>
-                    <a href="https://teemich.org.mx/wp-content/uploads/2025/08/Revista-IUS-ELECTORAL-5-1.pdf" target="_blank" class="paper-link">Decrypt Intel →</a>
-                </div>
-                <div class="paper-item">
-                    <span style="display:block; font-weight:600;">Cosmic Law & Mars (2025)</span>
-                    <a href="https://www.revistaabogacia.com/derecho-internacional-cosmico-y-la-colonizacion-de-marte/" target="_blank" class="paper-link">Decrypt Intel →</a>
+                    <div>
+                        <h3>The Secretary-General</h3>
+                        <p>The neutral manager. Uses "The Bully Pulpit" to call out bad behavior.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="card" style="border-left: 3px solid var(--secondary);">
-                <h3 style="color: var(--secondary);">🌿 My Essentials: Skincare & Mind</h3>
-                <p>Cleanse: La Roche-Posay Effaclar Gel <a href="https://a.co/d/07MmyAJx" target="_blank">🔗</a></p>
-                <p>Tone: Thayers Milky Toner <a href="https://a.co/d/0dwRTwyk" target="_blank">🔗</a></p>
-                <p>Strategy: Original Sin (Bleddyn Bowen) <a href="https://a.co/d/0c5Yz4Wt" target="_blank">🔗</a></p>
+                <h2>🌿 My Essentials: Skincare, Haircare & Mind</h2>
+                <p><i>A curated balance between aesthetics, discipline, and self-respect.</i></p>
+                
+                <h3>🧴 Skincare Routine</h3>
+                <p><b>1. Cleanse:</b> La Roche-Posay Effaclar Gel <a href="https://a.co/d/07MmyAJx" target="_blank">🔗</a></p>
+                <p><b>2. Tone:</b> Thayers Milky Toner <a href="https://a.co/d/0dwRTwyk" target="_blank">🔗</a></p>
+                <p><b>3. Hydrate:</b> ISDIN Hyaluronic Concentrate <a href="https://a.co/d/07sAlaQo" target="_blank">🔗</a> / Mixsoon Glacial Water <a href="https://a.co/d/01Vseal4" target="_blank">🔗</a></p>
+                <p><b>4. Treat:</b> The Ordinary Niacinamide 10% <a href="https://a.co/d/0hzhQEUz" target="_blank">🔗</a></p>
+                <p><b>5. Protect:</b> Cetaphil Moisturizer SPF 50 <a href="https://a.co/d/0gHWVni3" target="_blank">🔗</a></p>
+                <p><b>Extra:</b> ISDIN Retinal Intense & Retinal Eyes <a href="https://a.co/d/05jNJgyM" target="_blank">🔗</a></p>
+
+                <h3>💆‍♀️ Hair Care</h3>
+                <p><b>Aloe & Mango Shampoo:</b> Herbal Essences Bio:Renew <a href="https://a.co/d/05HKEQT7" target="_blank">🔗</a></p>
+                <p><b>Scalp Care:</b> The Ordinary Natural Moisturizing Factors + HA <a href="https://a.co/d/0df3DX1S" target="_blank">🔗</a></p>
             </div>
 
             <div class="card">
-                <h3>✨ Beauty & Balance</h3>
-                <p>Makeup is <span class="highlight">Soft Glam</span>: Enhancing, not hiding. Discipline is built daily through consistency and mental rest.</p>
+                <h2>📚 Mind & Strategy: Key Reading</h2>
+                <ul>
+                    <li><b>Bleddyn E. Bowen:</b> Original Sin & War in Space <a href="https://a.co/d/0c5Yz4Wt" target="_blank">🔗</a></li>
+                    <li><b>Is Globalization Over?</b> Reflection on global systems <a href="https://a.co/d/0aIA86N4" target="_blank">🔗</a></li>
+                    <li><b>Sun Tzu:</b> The Art of War (The Foundation) <a href="https://a.co/d/0aWckEbm" target="_blank">🔗</a></li>
+                </ul>
+                <div class="divider"></div>
+                <p><i>"Aesthetic is not superficial. It is a form of structure, respect, and identity."</i></p>
             </div>
 
             <div class="card">
-                <h3>🏁 Formula 1: 2026 Strategy</h3>
-                <p>Precision logistics meets hybrid power. 100% sustainable fuels and increased electrical power (~50%).</p>
+                <h2>🏁 Formula 1: Strategy & Systems</h2>
+                <p>Engineering, strategy, and human performance at the limit.</p>
+                
+                <h3>2026 Grid Expansion</h3>
+                <p>Audi enters (via Sauber) and Cadillac joins the American-backed expansion.</p>
+                
+                <h3>Engine Regulations 2026</h3>
+                <ul>
+                    <li>Electrical power increase (~50%)</li>
+                    <li>100% Sustainable Fuel mandatory</li>
+                    <li>Removal of MGU-H for cost efficiency</li>
+                </ul>
+
                 <table>
-                    <tr><td>1st Position</td><td>25 Points</td></tr>
-                    <tr><td>2nd Position</td><td>18 Points</td></tr>
-                </tbody>
+                    <thead><tr><th>Pos</th><th>Points</th><th>Pos</th><th>Points</th></tr></thead>
+                    <tbody>
+                        <tr><td>1st</td><td>25</td><td>6th</td><td>8</td></tr>
+                        <tr><td>2nd</td><td>18</td><td>7th</td><td>6</td></tr>
+                        <tr><td>3rd</td><td>15</td><td>8th</td><td>4</td></tr>
+                    </tbody>
                 </table>
             </div>
 
-            <div class="card" style="border-color: var(--gold);">
-                <h3 style="color: var(--gold);">The Manifesto: No Tacos, No War</h3>
-                <p style="font-style: italic;">"A Generation That Refuses to Be Silent."</p>
-                <a href="https://www.amazon.com.mx/Manifesto-Gen-Attempt-Researcher-Silence-ebook/dp/B0D6V6XGZW" target="_blank" class="btn" style="border-color: var(--gold); color: var(--gold); display: block; text-align: center; text-decoration: none;">Order on Amazon</a>
+            <div class="card">
+                <h2>✨ Beauty & Balance: Wellbeing</h2>
+                <p>Makeup goal: <span class="highlight">Soft Glam</span>—Enhancing, not hiding.</p>
+                <h3>Nutrition for Academia</h3>
+                <ul>
+                    <li><b>Brain Health:</b> Fish (Omega-3) & Clean Proteins</li>
+                    <li><b>Hydration:</b>Leafy Greens, Cucumber, Jicama</li>
+                    <li><b>Balance:</b> Natural foods, regular meals, no restriction.</li>
+                </ul>
+                <p><i>"Rest is not laziness. It is maintenance."</i></p>
             </div>
 
             <div class="card">
-                <h3>🎧 Cosmic Music & 🐾 Paws</h3>
-                <p>Sonic focus via Spotify Portal. Strategic care for Chihuahua and Beagle allies. "Movement is balance."</p>
+                <h2>🐾 Pet Care: Cosmic Paws Protocol</h2>
+                <p>Discipline and emotional awareness for our allies.</p>
+                <h3>Hygiene & Health</h3>
+                <p><b>Bath:</b> Every 4-6 weeks to protect skin barrier.</p>
+                <p><b>DIY Care:</b> Oatmeal-based soothing shampoo for sensitive skin.</p>
+                
+                <h3>Nutrition: The BARF Diet</h3>
+                <p>Raw meat, meaty bones, organs, and veggies. <i>(Consult vet first)</i>.</p>
+                <p><b>Safe:</b> Carrots, Pumpkin, Apples (No seeds).</p>
+                <p><b>Toxic:</b> Grapes, Chocolate, Onions, Garlic.</p>
+            </div>
+
+            <div class="card" style="border-color: var(--gold);">
+                <h2>The Manifesto: No Tacos, No War</h2>
+                <p style="font-style: italic;">"Mexico Beyond the Wall: A generation that refuses to be silent."</p>
+                <p>Poetry, social analysis, and resistance from the heart.</p>
+                <a href="https://www.amazon.com.mx/Manifesto-Gen-Attempt-Researcher-Silence-ebook/dp/B0D6V6XGZW" target="_blank" class="btn" style="border-color: var(--gold); color: var(--gold); width: 100%;">Order on Amazon</a>
+            </div>
+
+            <div class="card">
+                <h2>🎧 Cosmic Music Station</h2>
+                <p>The curated sonic landscape of the empire.</p>
+                <a href="https://open.spotify.com/playlist/2rQ82RL2seqbdvtVLRQqS1?si=KaD59Z_WSGSLyW2wTMFgIA&pi=hD7D7htcQu6Bn" target="_blank" class="btn" style="width: 100%;">Open Spotify Portal</a>
             </div>
 
         </div>
