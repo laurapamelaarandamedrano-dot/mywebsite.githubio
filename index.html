@@ -1,136 +1,214 @@
-<!-- SOLO TE MUESTRO LAS SECCIONES QUE CAMBIARON PARA QUE LO PEGUES FÁCIL -->
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura Pamela | Cosmic Capital Agency</title>
+    <style>
+        :root {
+            --accent: #00FFFF;
+            --secondary: #FF007F;
+            --gold: #D4AF37;
+            --green: #2ECC71;
+            --bg-deep: #030303;
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #F0F0F0;
+        }
 
-<!-- AMAZON ESSENTIALS -->
+        body {
+            margin: 0; background: var(--bg-deep); color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', Helvetica, sans-serif;
+            overflow-x: hidden; line-height: 1.6;
+        }
+
+        #bg-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at center, #0a0a15 0%, #000 100%);
+        }
+
+        .data-globe {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 75vmax; height: 75vmax; border-radius: 50%;
+            background: 
+                repeating-linear-gradient(90deg, transparent 0, transparent 60px, rgba(0, 255, 255, 0.03) 60px, rgba(0, 255, 255, 0.03) 61px),
+                repeating-linear-gradient(0deg, transparent 0, transparent 40px, rgba(255, 0, 127, 0.03) 40px, rgba(255, 0, 127, 0.03) 41px),
+                radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.1), rgba(255, 0, 127, 0.05), transparent);
+            animation: rotateGlobe 45s linear infinite;
+        }
+
+        @keyframes rotateGlobe {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        header { padding: 80px 20px 40px; text-align: center; }
+        .brand { font-size: 0.9rem; color: var(--gold); letter-spacing: 12px; text-transform: uppercase; }
+        .hero-name { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; }
+
+        .container { max-width: 1400px; margin: auto; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; }
+
+        .card {
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.4s;
+        }
+
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        h3 {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--accent);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 10px;
+        }
+
+        .paper-item {
+            margin-bottom: 15px;
+            border-left: 1px solid var(--glass-border);
+            padding-left: 10px;
+        }
+
+        .paper-title { font-weight: bold; font-size: 0.85rem; }
+        .paper-meta { font-size: 0.65rem; opacity: 0.6; }
+        .paper-link { color: var(--secondary); font-size: 0.7rem; text-decoration: none; }
+
+        .btn-primary {
+            border: 1px solid #fff;
+            padding: 10px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="bg-canvas"><div class="data-globe"></div></div>
+
+<header>
+    <div class="brand">Cosmic Capital Agency</div>
+    <h1 class="hero-name">Laura Pamela Aranda Medrano</h1>
+</header>
+
+<div class="container">
+<div class="grid">
+
+<!-- AMAZON -->
 <div class="card">
-    <h3 style="color: var(--secondary);">Amazon Essentials</h3>
+<h3>Amazon Essentials</h3>
 
-    <p style="font-size:0.85rem; opacity:0.7;">
-        🌿 My Essentials: Skincare, Haircare & Mind <br><br>
-        A curated balance between aesthetics, discipline, and self-respect.
-    </p>
+<p>🌿 Skincare, Haircare & Mind — balance between aesthetics & discipline.</p>
 
-    <ul style="padding:0; margin-top:15px;">
-
-        <li class="paper-item">
-            <span class="paper-title">La Roche-Posay Effaclar Cleanser</span>
-            <span class="paper-meta">Sensitive acne-prone skin balance</span>
-            <a href="https://a.co/d/07MmyAJx" target="_blank" class="paper-link">VIEW →</a>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">Thayers Milky Toner</span>
-            <span class="paper-meta">Hydration + elasticity prep</span>
-            <a href="https://a.co/d/0dwRTwyk" target="_blank" class="paper-link">VIEW →</a>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">ISDIN Hyaluronic Concentrate</span>
-            <span class="paper-meta">Clean glow, lightweight hydration</span>
-            <a href="https://a.co/d/07sAlaQo" target="_blank" class="paper-link">VIEW →</a>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">The Ordinary Niacinamide</span>
-            <span class="paper-meta">Texture + oil control</span>
-            <a href="https://a.co/d/0hzhQEUz" target="_blank" class="paper-link">VIEW →</a>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">Cetaphil Moisturizing Cream</span>
-            <span class="paper-meta">Barrier repair essential</span>
-            <a href="https://a.co/d/01SGOeAB" target="_blank" class="paper-link">VIEW →</a>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">SPF 50 Daily Protection</span>
-            <span class="paper-meta">Long-term skin preservation</span>
-            <a href="https://a.co/d/0gHWVni3" target="_blank" class="paper-link">VIEW →</a>
-        </li>
-
-    </ul>
+<div class="paper-item">
+<span class="paper-title">Cleanser</span>
+<span class="paper-meta">La Roche Posay Effaclar</span>
+<a href="https://a.co/d/07MmyAJx" target="_blank" class="paper-link">VIEW</a>
 </div>
 
-
-<!-- COSMIC MUSIC -->
-<div class="card">
-    <h3>Cosmic Music Station</h3>
-    <p style="opacity: 0.7; font-size: 0.85rem;">
-        Sonic landscapes for focused performance. High-energy pop meets geopolitical vibes.
-    </p>
-
-    <a href="https://open.spotify.com/playlist/2rQ82RL2seqbdvtVLRQqS1?si=KaD59Z_WSGSLyW2wTMFgIA&pi=hD7D7htcQu6Bn"
-       target="_blank"
-       class="btn-primary"
-       style="margin-top:20px; display:inline-block; text-align:center;">
-       Open Portal
-    </a>
+<div class="paper-item">
+<span class="paper-title">Toner</span>
+<span class="paper-meta">Thayers Milky Toner</span>
+<a href="https://a.co/d/0dwRTwyk" target="_blank" class="paper-link">VIEW</a>
 </div>
 
-
-<!-- COSMIC PAWS -->
-<div class="card">
-    <h3>Cosmic Paws Protocol</h3>
-
-    <p style="font-size:0.85rem; opacity:0.7;">
-        🐾 Balance, Knowledge & Responsibility <br><br>
-
-        Caring for pets is structured love — built through discipline, informed nutrition,
-        hygiene, and emotional awareness.
-    </p>
-
-    <ul style="padding:0; margin-top:15px;">
-        <li class="paper-item">
-            <span class="paper-title">Balanced Hygiene</span>
-            <span class="paper-meta">Avoid over-washing — protect skin barrier</span>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">BARF Diet Awareness</span>
-            <span class="paper-meta">Raw nutrition requires veterinary supervision</span>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">Safe Foods</span>
-            <span class="paper-meta">Carrots, pumpkin, rice (controlled)</span>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">Movement & Play</span>
-            <span class="paper-meta">Mental + physical stability</span>
-        </li>
-    </ul>
+<div class="paper-item">
+<span class="paper-title">Hydration</span>
+<span class="paper-meta">ISDIN Hyaluronic</span>
+<a href="https://a.co/d/07sAlaQo" target="_blank" class="paper-link">VIEW</a>
 </div>
 
-
-<!-- F1 PERFORMANCE -->
-<div class="card">
-    <h3>Performance Analytics (F1)</h3>
-
-    <p style="font-size:0.85rem; opacity:0.7;">
-        🏁 Formula 1: Precision, Strategy & Systems <br><br>
-
-        F1 is not just racing — it is engineering, data, and decision-making under pressure.
-    </p>
-
-    <ul style="padding:0; margin-top:15px;">
-        <li class="paper-item">
-            <span class="paper-title">Race Structure</span>
-            <span class="paper-meta">Practice → Qualifying → Grand Prix</span>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">Tyre Strategy</span>
-            <span class="paper-meta">Soft vs Medium vs Hard decisions</span>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">2026 Shift</span>
-            <span class="paper-meta">Hybrid evolution + sustainable fuels</span>
-        </li>
-
-        <li class="paper-item">
-            <span class="paper-title">System Thinking</span>
-            <span class="paper-meta">Energy management defines winners</span>
-        </li>
-    </ul>
+<div class="paper-item">
+<span class="paper-title">Niacinamide</span>
+<span class="paper-meta">The Ordinary</span>
+<a href="https://a.co/d/0hzhQEUz" target="_blank" class="paper-link">VIEW</a>
 </div>
+
+<div class="paper-item">
+<span class="paper-title">Moisturizer</span>
+<span class="paper-meta">Cetaphil Cream</span>
+<a href="https://a.co/d/01SGOeAB" target="_blank" class="paper-link">VIEW</a>
+</div>
+
+<div class="paper-item">
+<span class="paper-title">SPF</span>
+<span class="paper-meta">Daily Protection 50</span>
+<a href="https://a.co/d/0gHWVni3" target="_blank" class="paper-link">VIEW</a>
+</div>
+
+</div>
+
+<!-- MUSIC -->
+<div class="card">
+<h3>Cosmic Music Station</h3>
+<p>High-energy focus playlist.</p>
+<a href="https://open.spotify.com/playlist/2rQ82RL2seqbdvtVLRQqS1" target="_blank" class="btn-primary">Open Portal</a>
+</div>
+
+<!-- PETS -->
+<div class="card">
+<h3>Cosmic Paws</h3>
+
+<div class="paper-item">
+<span class="paper-title">Hygiene</span>
+<span class="paper-meta">Avoid over washing</span>
+</div>
+
+<div class="paper-item">
+<span class="paper-title">Diet</span>
+<span class="paper-meta">BARF awareness</span>
+</div>
+
+<div class="paper-item">
+<span class="paper-title">Safe foods</span>
+<span class="paper-meta">Carrots, pumpkin, rice</span>
+</div>
+
+<div class="paper-item">
+<span class="paper-title">Movement</span>
+<span class="paper-meta">Daily stimulation required</span>
+</div>
+
+</div>
+
+<!-- F1 -->
+<div class="card">
+<h3>Formula 1 Systems</h3>
+
+<div class="paper-item">
+<span class="paper-title">Race Flow</span>
+<span class="paper-meta">Practice → Qualifying → Race</span>
+</div>
+
+<div class="paper-item">
+<span class="paper-title">Tyres</span>
+<span class="paper-meta">Soft / Medium / Hard</span>
+</div>
+
+<div class="paper-item">
+<span class="paper-title">2026 Shift</span>
+<span class="paper-meta">Hybrid + sustainable fuel</span>
+</div>
+
+<div class="paper-item">
+<span class="paper-title">Strategy</span>
+<span class="paper-meta">Energy management wins</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
+```
