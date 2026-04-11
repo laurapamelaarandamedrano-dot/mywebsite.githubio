@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +21,7 @@
             overflow-x: hidden; line-height: 1.6;
         }
 
+        /* --- BACKGROUND ENGINE --- */
         #bg-canvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at center, #0a0a15 0%, #000 100%);
@@ -37,178 +37,208 @@
             animation: rotateGlobe 45s linear infinite;
         }
 
-        @keyframes rotateGlobe {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
+        @keyframes rotateGlobe { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 
         header { padding: 80px 20px 40px; text-align: center; }
-        .brand { font-size: 0.9rem; color: var(--gold); letter-spacing: 12px; text-transform: uppercase; }
-        .hero-name { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; }
+        .brand { font-size: 0.9rem; color: var(--gold); letter-spacing: 12px; font-weight: 300; text-transform: uppercase; margin-bottom: 10px; }
+        .hero-name { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -1px; margin: 0; }
 
-        .container { max-width: 1400px; margin: auto; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; align-items: stretch; }
 
+        /* CARDS */
         .card {
-            background: rgba(255,255,255,0.02);
-            backdrop-filter: blur(40px);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(45px);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 30px;
-            transition: 0.4s;
+            border-radius: 15px; padding: 40px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex; flex-direction: column;
         }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(255, 255, 255, 0.04); }
 
-        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        h3 { color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 25px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; }
+        
+        .paper-item { margin-bottom: 20px; list-style: none; border-left: 1px solid var(--glass-border); padding-left: 15px; }
+        .paper-title { display: block; font-weight: 600; font-size: 0.85rem; color: #fff; line-height: 1.3; }
+        .paper-meta { display: block; font-size: 0.65rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+        .paper-link { color: var(--secondary); text-decoration: none; font-size: 0.7rem; font-weight: 700; margin-top: 8px; display: inline-block; transition: 0.3s; }
+        
+        .monitor-wrap { text-align: center; max-width: 600px; margin: 0 auto 60px; }
+        .bar-container { width: 100%; height: 4px; background: rgba(255,255,255,0.1); margin: 20px 0; border-radius: 2px; }
+        .bar-active { width: 88%; height: 100%; background: var(--accent); box-shadow: 0 0 15px var(--accent); }
 
-        h3 {
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            color: var(--accent);
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 10px;
+        .btn-primary { 
+            background: transparent; border: 1px solid #fff; color: #fff; 
+            padding: 10px 20px; border-radius: 4px; font-size: 0.6rem; 
+            text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s;
+            text-decoration: none; display: inline-block;
         }
+        .btn-primary:hover { background: #fff; color: #000; }
 
-        .paper-item {
-            margin-bottom: 15px;
-            border-left: 1px solid var(--glass-border);
-            padding-left: 10px;
-        }
-
-        .paper-title { font-weight: bold; font-size: 0.85rem; }
-        .paper-meta { font-size: 0.65rem; opacity: 0.6; }
-        .paper-link { color: var(--secondary); font-size: 0.7rem; text-decoration: none; }
-
-        .btn-primary {
-            border: 1px solid #fff;
-            padding: 10px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            display: inline-block;
-            text-decoration: none;
-            color: white;
-        }
+        .scroll-box { max-height: 300px; overflow-y: auto; padding-right: 10px; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
+        .section-tag { font-size: 0.65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; display: block; border-bottom: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
-
 <body>
 
-<div id="bg-canvas"><div class="data-globe"></div></div>
+    <div id="bg-canvas"><div class="data-globe"></div></div>
 
-<header>
-    <div class="brand">Cosmic Capital Agency</div>
-    <h1 class="hero-name">Laura Pamela Aranda Medrano</h1>
-</header>
+    <header>
+        <div class="brand">Cosmic Capital Agency</div>
+        <h1 class="hero-name">Laura Pamela Aranda Medrano</h1>
+    </header>
 
-<div class="container">
-<div class="grid">
+    <div class="container">
+        <div class="monitor-wrap">
+            <span style="font-size: 0.6rem; letter-spacing: 5px; color: var(--accent);">SYSTEM FOCUS: OPTIMIZED</span>
+            <div class="bar-container"><div class="bar-active"></div></div>
+        </div>
 
-<!-- AMAZON -->
-<div class="card">
-<h3>Amazon Essentials</h3>
+        <div class="grid">
+            
+            <div class="card" style="grid-column: 1 / -1; border: 1px solid var(--accent); background: rgba(0, 255, 255, 0.02);">
+                <h3 style="color: var(--accent);">UN for Dummies: The Global Group Chat 🌎</h3>
+                <p style="font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 25px; opacity: 0.6;">Dossier #001: International Governance but make it understandable.</p>
 
-<p>🌿 Skincare, Haircare & Mind — balance between aesthetics & discipline.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; text-align: left;">
+                    
+                    <div style="padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);">
+                        <h4 style="color: var(--gold); margin-top: 0;">The General Assembly (GA)</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.8;">
+                            <b>The Vibe:</b> The ultimate global group chat. <br><br>
+                            All 193 countries discuss world tea (climate, peace). Every country gets 1 vote. Resolutions are <i>recommendations</i>, not hard laws.
+                        </p>
+                    </div>
 
-<div class="paper-item">
-<span class="paper-title">Cleanser</span>
-<span class="paper-meta">La Roche Posay Effaclar</span>
-<a href="https://a.co/d/07MmyAJx" target="_blank" class="paper-link">VIEW</a>
-</div>
+                    <div style="padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);">
+                        <h4 style="color: var(--secondary); margin-top: 0;">The Security Council (UNSC)</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.8;">
+                            <b>The Vibe:</b> The Admins with Kick Power. <br><br>
+                            Only 15 members. The "Big 5" (P5) have <b>Veto Power</b> to delete any resolution. They handle war and peace.
+                        </p>
+                    </div>
 
-<div class="paper-item">
-<span class="paper-title">Toner</span>
-<span class="paper-meta">Thayers Milky Toner</span>
-<a href="https://a.co/d/0dwRTwyk" target="_blank" class="paper-link">VIEW</a>
-</div>
+                    <div style="padding: 20px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);">
+                        <h4 style="color: var(--accent); margin-top: 0;">The Secretary-General</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.8;">
+                            <b>The Vibe:</b> The Neutral Manager. <br><br>
+                            The face of the UN. No army, but uses "The Bully Pulpit" to call out bad behavior and keep everyone from leaving the chat.
+                        </p>
+                    </div>
+                </div>
 
-<div class="paper-item">
-<span class="paper-title">Hydration</span>
-<span class="paper-meta">ISDIN Hyaluronic</span>
-<a href="https://a.co/d/07sAlaQo" target="_blank" class="paper-link">VIEW</a>
-</div>
+                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed var(--glass-border); text-align: center;">
+                    <p style="font-size: 0.9rem; font-style: italic; opacity: 0.9;">
+                        "Basically, the UN is the only room where the whole world shows up to agree on rules so we don't end the world. It’s messy, but it's essential."
+                    </p>
+                    <button class="btn-primary" style="margin-top: 15px;">Read my Full Gender Reform Proposal</button>
+                </div>
+            </div>
 
-<div class="paper-item">
-<span class="paper-title">Niacinamide</span>
-<span class="paper-meta">The Ordinary</span>
-<a href="https://a.co/d/0hzhQEUz" target="_blank" class="paper-link">VIEW</a>
-</div>
+            <div class="card">
+                <h3>Executive Profile</h3>
+                <p style="font-size: 1.1rem; color: var(--gold); margin-bottom: 10px;">Global Strategist & Academic Researcher</p>
+                <p style="opacity: 0.7; font-size: 0.85rem;">Published author and YOUNGA Youth Delegate. Bridging AI-driven political communication, cosmic law, and inclusive global governance with high-performance aesthetics.</p>
+            </div>
 
-<div class="paper-item">
-<span class="paper-title">Moisturizer</span>
-<span class="paper-meta">Cetaphil Cream</span>
-<a href="https://a.co/d/01SGOeAB" target="_blank" class="paper-link">VIEW</a>
-</div>
+            <div class="card">
+                <h3>Journal Publications</h3>
+                <ul style="padding: 0; margin: 0;">
+                    <li class="paper-item">
+                        <span class="paper-title">Digital Democracy & Algorithmic Trust (2025)</span>
+                        <span class="paper-meta">IUS-ELECTORAL Digital Journal</span>
+                        <a href="https://teemich.org.mx/wp-content/uploads/2025/08/Revista-IUS-ELECTORAL-5-1.pdf" target="_blank" class="paper-link">VIEW RESEARCH →</a>
+                    </li>
+                    <li class="paper-item">
+                        <span class="paper-title">Cosmic Law & Mars Colonization (2025)</span>
+                        <span class="paper-meta">Abogacía Journal</span>
+                        <a href="https://www.revistaabogacia.com/derecho-internacional-cosmico-y-la-colonizacion-de-marte/" target="_blank" class="paper-link">VIEW RESEARCH →</a>
+                    </li>
+                    <li class="paper-item">
+                        <span class="paper-title">Latin America vs Nordic Model (2025)</span>
+                        <span class="paper-meta">JUS Legal Journal (Indexed)</span>
+                        <a href="https://doi.org/10.5281/zenodo.17112040" target="_blank" class="paper-link">VIEW RESEARCH →</a>
+                    </li>
+                    <li class="paper-item">
+                        <span class="paper-title">Women, War & Global Governance (2024)</span>
+                        <span class="paper-meta">Our GenPeace (UK)</span>
+                    </li>
+                </ul>
+            </div>
 
-<div class="paper-item">
-<span class="paper-title">SPF</span>
-<span class="paper-meta">Daily Protection 50</span>
-<a href="https://a.co/d/0gHWVni3" target="_blank" class="paper-link">VIEW</a>
-</div>
+            <div class="card" style="border-left: 3px solid var(--green);">
+                <h3 style="color: var(--green);">Eco-Strategy</h3>
+                <p style="opacity: 0.7; font-size: 0.85rem;">Analyzing the intersection of environmental action and geoeconomic shifts. Focusing on regionalized technological competition and sustainable survival.</p>
+            </div>
 
-</div>
+            <div class="card" style="border-color: var(--gold);">
+                <h3 style="color: var(--gold);">The Manifesto: No Tacos, No War</h3>
+                <p style="font-style: italic; color: #fff; font-size: 0.9rem;">"A Manifesto for a Generation That Refuses to Be Silent."</p>
+                <a href="https://www.amazon.com.mx/Manifesto-Gen-Attempt-Researcher-Silence-ebook/dp/B0D6V6XGZW" target="_blank" class="btn-primary" style="margin-top: 20px; border-color: var(--gold); color: var(--gold); text-align: center;">Order on Amazon</a>
+            </div>
 
-<!-- MUSIC -->
-<div class="card">
-<h3>Cosmic Music Station</h3>
-<p>High-energy focus playlist.</p>
-<a href="https://open.spotify.com/playlist/2rQ82RL2seqbdvtVLRQqS1" target="_blank" class="btn-primary">Open Portal</a>
-</div>
+            <div class="card">
+                <h3 style="color: var(--secondary);">Amazon Essentials</h3>
+                <div class="scroll-box">
+                    <p style="font-size: 0.75rem; opacity: 0.8; margin-bottom: 20px;">A curated balance between aesthetics, discipline, and self-respect.</p>
+                    
+                    <span class="section-tag">Skincare Protocol</span>
+                    <ul style="padding: 0; margin: 10px 0; font-size: 0.75rem;">
+                        <li class="paper-item"><a href="https://a.co/d/07MmyAJx" target="_blank" class="paper-link">LRP Effaclar Gel</a></li>
+                        <li class="paper-item"><a href="https://a.co/d/0dwRTwyk" target="_blank" class="paper-link">Thayers Milky Toner</a></li>
+                        <li class="paper-item"><a href="https://a.co/d/07sAlaQo" target="_blank" class="paper-link">ISDIN Hyaluronic</a></li>
+                        <li class="paper-item"><a href="https://a.co/d/0hzhQEUz" target="_blank" class="paper-link">The Ordinary Niacinamide</a></li>
+                    </ul>
 
-<!-- PETS -->
-<div class="card">
-<h3>Cosmic Paws</h3>
+                    <span class="section-tag">Strategic Reading</span>
+                    <ul style="padding: 0; margin: 10px 0; font-size: 0.75rem;">
+                        <li class="paper-item"><a href="https://a.co/d/0c5Yz4Wt" target="_blank" class="paper-link">Original Sin (Bowen)</a></li>
+                        <li class="paper-item"><a href="https://a.co/d/02KJRuki" target="_blank" class="paper-link">War in Space</a></li>
+                        <li class="paper-item"><a href="https://a.co/d/0aWckEbm" target="_blank" class="paper-link">The Art of War</a></li>
+                    </ul>
+                </div>
+            </div>
 
-<div class="paper-item">
-<span class="paper-title">Hygiene</span>
-<span class="paper-meta">Avoid over washing</span>
-</div>
+            <div class="card">
+                <h3>Cosmic Music Station</h3>
+                <p style="opacity: 0.7; font-size: 0.85rem;">Sonic landscapes for focused performance. High-energy pop meets geopolitical vibes.</p>
+                <a href="https://open.spotify.com/playlist/2rQ82RL2seqbdvtVLRQqS1?si=KaD59Z_WSGSLyW2wTMFgIA&pi=hD7D7htcQu6Bn" target="_blank" class="btn-primary" style="margin-top: 20px;">Open Portal</a>
+            </div>
 
-<div class="paper-item">
-<span class="paper-title">Diet</span>
-<span class="paper-meta">BARF awareness</span>
-</div>
+            <div class="card">
+                <h3>Cosmic Paws Protocol</h3>
+                <div class="scroll-box">
+                    <p style="font-size: 0.75rem; opacity: 0.7;">Strategic welfare for elite companions. Loyalty and aesthetic care for Chihuahua and Beagle allies.</p>
+                    
+                    <span class="section-tag">Hygiene Standard</span>
+                    <p style="font-size: 0.7rem; opacity: 0.8;">• Short-hair: 4–6 weeks<br>• Long-hair: 3–4 weeks</p>
+                    
+                    <span class="section-tag">Nutrition: BARF Method</span>
+                    <p style="font-size: 0.7rem; opacity: 0.8;">Biologically Appropriate Raw Food: Meaty bones, organs, and raw proteins for optimal vitality.</p>
+                    
+                    <span class="section-tag">Toxic Matrix (Avoid)</span>
+                    <p style="font-size: 0.7rem; color: var(--secondary);">Chocolate, Grapes, Onions, Garlic, Alcohol.</p>
+                </div>
+            </div>
 
-<div class="paper-item">
-<span class="paper-title">Safe foods</span>
-<span class="paper-meta">Carrots, pumpkin, rice</span>
-</div>
+            <div class="card">
+                <h3>Performance Analytics (F1)</h3>
+                <div class="scroll-box">
+                    <p style="font-size: 0.75rem; opacity: 0.7;">Decoding Formula 1 telemetry as a metaphor for precision logistics.</p>
+                    
+                    <span class="section-tag">2026 Engine Transition</span>
+                    <p style="font-size: 0.7rem; opacity: 0.8;">• 50% Electrical Power increase<br>• 100% Sustainable Fuels<br>• MGU-H Removal</p>
+                    
+                    <span class="section-tag">New Grid Entries</span>
+                    <p style="font-size: 0.7rem; opacity: 0.8;">• Audi (via Sauber)<br>• Cadillac (GM Partnership)</p>
+                    
+                    <span class="section-tag">The Philosophy</span>
+                    <p style="font-size: 0.7rem; font-style: italic; opacity: 0.6;">"Precision meets discipline. Strategy defines outcomes."</p>
+                </div>
+            </div>
 
-<div class="paper-item">
-<span class="paper-title">Movement</span>
-<span class="paper-meta">Daily stimulation required</span>
-</div>
-
-</div>
-
-<!-- F1 -->
-<div class="card">
-<h3>Formula 1 Systems</h3>
-
-<div class="paper-item">
-<span class="paper-title">Race Flow</span>
-<span class="paper-meta">Practice → Qualifying → Race</span>
-</div>
-
-<div class="paper-item">
-<span class="paper-title">Tyres</span>
-<span class="paper-meta">Soft / Medium / Hard</span>
-</div>
-
-<div class="paper-item">
-<span class="paper-title">2026 Shift</span>
-<span class="paper-meta">Hybrid + sustainable fuel</span>
-</div>
-
-<div class="paper-item">
-<span class="paper-title">Strategy</span>
-<span class="paper-meta">Energy management wins</span>
-</div>
-
-</div>
-
-</div>
-</div>
-
+        </div>
+    </div>
 </body>
 </html>
-```
